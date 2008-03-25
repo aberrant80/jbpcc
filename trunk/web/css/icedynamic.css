@@ -1,0 +1,47 @@
+/*
+ * $Id: $
+ * Copyright © 2007 - 2008 Talgentra Ltd. All rights reserved.
+ * 720 Southern Lakes, Waterside Drive, Aztec West, Almondsbury, Bristol, BS32 4UD, England
+ * No Part of this file may be copied or distributed without the permission of Talgentra Ltd
+ */
+
+/***
+naming convention
+ - component[ComponentEtcEtc] .component[ComponentEtcEtc] 
+ - state : eg. selected/hover, etc
+ - component_state : menu_selected/ menu_hover, etc
+
+***/ 
+
+.icePanelTab {
+    padding: 0px;
+}
+ 
+.iceTabSetTabSpacer {
+    padding: 0px;
+    width: 0px;
+}
+
+.mainPanelTabSpacer {
+    padding: 0px;
+    width: 780px;
+}
+
+.mainPanel2TabSpacer {
+    padding: 0px;
+    width: 780px;
+}
+
+.iceOutProgBg {
+    background-color: #002447;
+    background-repeat: repeat-x;
+    width: 600px;
+}
+
+.iceOutProgTxt {
+    color: #FFF;
+}
+
+html>body .iceOutProgBg {/*child selector combinator for non IE/Win */
+   height: 16px;
+}

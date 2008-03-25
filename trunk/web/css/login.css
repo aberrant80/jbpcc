@@ -1,0 +1,79 @@
+
+/***
+naming convention
+ - component[ComponentEtcEtc] .component[ComponentEtcEtc] 
+ - state : eg. selected/hover, etc
+ - component_state : menu_selected/ menu_hover, etc
+
+***/
+
+.appTitle {
+     font: large arial, geneva, helvetica ;
+     color: #FFF;
+}
+
+.purplePanel {
+    background-image: url(/webadmin/images/tile_bg.gif);
+    background-repeat: repeat ;
+    width: 100%; 
+    height: 20px; 
+    position: absolute;
+}
+
+.bluePanel {
+    background-image: url(/webadmin/images/tile_navyblue.gif);
+    background-repeat: repeat ;
+    width: 100%;
+    height: 250px;
+    z-index: -2;
+}
+
+.westPanel {
+    width: 740px;
+}   
+
+.centerPanel {
+    width: 300px;
+}
+
+.eastPanel {
+    width: 100px;
+}
+.icePage {
+    border: 1px solid #ACBECE;
+    width: 97%;
+}
+
+.icePageNorth {
+    background-image: url(/webadmin/images/tile_blue.gif);
+    background-repeat: repeat-x;
+    padding-bottom: 50px;
+}
+
+.icePageCenter {
+    padding-left: 25px;
+    vertical-align: top;
+    width: 60%;
+}
+
+.icePageWest {
+    float: right;
+    width: 40%;
+}
+
+.icePageSouth {
+    padding-top: 50px;
+}
+
+.copyrightHeader {
+    background-image: url(/webadmin/images/tile_blue.gif);
+    background-repeat: repeat-x;
+}
+
+.copyrightMiddle {
+    align: center;
+    font: 10px arial, helvetica, sans-serif;
+    text-align: center;
+    vertical-align: top;
+    padding: 3px;
+}
