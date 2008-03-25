@@ -1,1 +1,4 @@
-This is just first try of check in out to google svn server..
+Note
+
+1. To build JSF 1.1 compatible WAR, type "ant war"
+2. To build JSF 1.2 compatible WAR type "ant -Djsf12=true war"
