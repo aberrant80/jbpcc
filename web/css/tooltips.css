@@ -1,0 +1,77 @@
+
+a.tt{
+    position:relative;
+    z-index:24;
+    color:#3CA3FF;
+	/* font-weight:bold; */
+    text-decoration:none;
+}
+a.tt span{ display: none; }
+
+/*background:; ie hack, something must be changed in a for ie to execute it*/
+a.tt:hover{ z-index:25; color: #aaaaff; }
+a.tt:hover span.tooltip{
+    display:block;
+    position:absolute;
+    top:0px; left:0;
+	padding: 10px 0 0 0;
+	width:250px;
+	color: #993300;
+        text-align: left;
+	filter: alpha(opacity:90);
+	KHTMLOpacity: 0.90;
+	MozOpacity: 0.90;
+	opacity: 0.90;
+}
+
+a.tt:hover span.top{
+	display: block;
+	padding: 35px 8px 0;
+    background: url(bubble.gif) no-repeat top;
+}
+
+a.tt:hover span.middle{ /* different middle bg for stretch */
+	display: block;
+	padding: 5px;
+	background: url(bubble_filler.gif) repeat bottom; 
+}
+
+a.tt:hover span.bottom{
+	display: block;
+	padding:3px 8px 6px;
+	color: #548912;
+    background: url(bubble.gif) no-repeat bottom;
+}
+
+a.tt:hover span.tooltipright{
+    display:block;
+    position:absolute;
+    top:0px; left:-250;
+	padding: 10px 0 0 0;
+	width:250px;
+	color: #993300;
+        text-align: left;
+	filter: alpha(opacity:90);
+	KHTMLOpacity: 0.90;
+	MozOpacity: 0.90;
+	opacity: 0.90;
+}
+
+a.tt:hover span.topright{
+	display: block;
+	padding: 35px 8px 0;
+    background: url(bubbleright.gif) no-repeat top;
+}
+
+a.tt:hover span.middleright{ /* different middle bg for stretch */
+	display: block;
+	padding: 5px;
+	background: url(bubble_fillerright.gif) repeat bottom; 
+}
+
+a.tt:hover span.bottomright{
+	display: block;
+	padding:3px 8px 6px;
+	color: #548912;
+    background: url(bubbleright.gif) no-repeat bottom;
+}

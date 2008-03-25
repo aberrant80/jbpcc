@@ -1,0 +1,402 @@
+
+/***
+naming convention
+ - component[ComponentEtcEtc] .component[ComponentEtcEtc] 
+ - state : eg. selected/hover, etc
+ - component_state : menu_selected/ menu_hover, etc
+
+***/
+
+.mainPanel {	
+    background: transparent;
+    width: 900px;
+    _width: 780px; /*for IE*/
+}
+
+.headerLabel {
+   background-color: #000099;
+   text-align: center;
+   color: #FFF;
+   font-family: arial helvetica sans-serif 12pt strong;
+   width: 100%;
+}
+
+.propertyLabel {
+   color: #000;
+   font-family:  12pt arial, geneva, helvetica strong;
+}
+
+.panelGroup {
+    width: 880px;
+    _width: 760px; /*for IE*/
+   /* border-collapse: separate;
+    border-spacing: 5px;*/
+    background: transparent;
+}
+
+.panelGroupGrey {
+    width: 100%;
+    border: 1px solid #CCC;
+    background-color: #EEE;
+}
+
+.panelGroupGrey .label{
+     font: 12pt arial, geneva, helvetica ;
+     padding: 5px;
+}
+
+.panelGroupBorder {
+    width: 895px;
+    _width: 775px;/*for IE*/
+    padding: 10px; 
+    border: 1px solid #CCC;
+    background-color: #EFEFF6;
+}
+
+.panelGroup text {
+    font: 10pt arial, geneva, helvetica ;
+}
+
+.subPanelGroup {
+    width: 880px;
+    _width: 760px;/*for IE*/
+    height: 100%;
+   /* border-collapse: separate;
+    border-spacing: 5px;*/
+    background: transparent;
+}
+
+.subPanelGroupBorder {
+    width: 880px;
+    _width: 760px;/*for IE*/
+    height: 100%;
+    border: 1px solid #EEE;
+    background: transparent;
+}
+
+.panelStatus {
+    vertical-align: middle;
+    width: 900px;
+    _width: 780px;/*for IE*/
+    height: 100px;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+.columnLeft {
+    text-align: left;
+}
+
+.columnCenter {
+    text-align: center;
+}
+
+.columnRight {
+    text-align: right;
+}
+
+.jvmStatDataCol {
+   width: 60%;
+}
+
+.jvmStatChartCol {
+   background-color: #A3A3A3;
+   text-align: center;
+   width: 40%;
+}
+
+.statisticTable {
+   font : 10pt strong arial,helvetica,geneva;
+   background-color: #FFF;
+   border-spacing: 2px; 
+  /* border-collapse: separate;*/
+   width: 100%;
+}
+
+.statisticTable td {
+   border: solid 1px #CCC ridge;
+}
+
+
+.dataTable {
+    font: 10pt arial, geneva, helvetica;
+    background-color: #FFF;
+    border: none;   
+    border-spacing: 1px;
+    border-collapse: separate;
+    width: 100%;
+}
+
+.dataTable thead {
+    background-color: #69C;
+    height: 20px;
+    font: strong arial, helvetica, geneva;
+    color: #FFF;
+}
+
+.dataTable td {
+    padding: 3px;
+}
+
+.panelGrid {
+    border-spacing: 5px;
+    font: 10pt arial, geneva, helvetica;
+    width: 900px;
+    _width: 780px;/*for IE*/
+    background: transparent;
+}
+
+.panelGrid_short {
+    text-align: center;
+    border-spacing: 5px;
+    font: 10pt arial, geneva, helvetica;
+    width: 400px;
+    _width: 280px;/*for IE*/
+    background: transparent;
+}
+
+
+.panelGrid thead {
+    background-color: #000099;
+    height: 20px;
+    width: 100%;
+    font: strong arial, helvetica, geneva;
+    color: #FFF;
+}
+
+.headerCol {
+    vertical-align: middle;
+    text-align: center;
+    padding: 2px;
+    height: 15px;
+    background-color: #DEDEDE;
+    border-bottom: outset 1px #EEE;
+    border-top : solid 1px #FFF;
+    border-left: solid 1px #FFF;
+    border-right: solid 1px #EEE;
+}
+
+.labelCol {
+     background-color: #FFFFCC; 
+     width: 200px;
+     height: 23px; 
+     line-height: 23px;
+}
+
+.col1 {
+    border: solid 1px;
+    border-color: #EEE;
+    border-style: solid;
+}
+
+.col2 {
+    border: solid 1px;
+    border-color: #EEE;
+    border-style: solid;
+}
+
+.col3 {
+    border: 0px;
+}
+
+
+.clearPanel {
+    background: transparent;
+    text-decoration: none;    
+}
+
+.whitePanel {
+    background-color: #FFF;
+}
+
+
+.transparentPanel {
+    background: transparent;
+    width: 100%;
+}
+
+.disable {
+    background-color: #EEE;
+    color: #555;
+}
+
+.inputText {
+    font: 10pt arial, helvetica, geneva;
+    background-color: #FFF;
+}
+
+.outputText {
+    font: 10pt arial, helvetica, geneva;
+    background: transparent;
+}
+
+.statusMessage {
+    font: 10pt arial, verdana, geneva;
+    color: #154FC7;
+    background-color: #FFF7B8;
+    border: 1px solid #F4E888;
+    height: 15px;
+    width: 900px;
+    _width: 780px;/*for IE*/
+    padding: 5px;
+    text-align: center;
+}
+
+.inputTextArea {
+    font: 10pt arial, helvetica, geneva;
+    vertical-align: middle;
+    border: 1px solid #858585;
+    background-color: #FFF;
+    width: 100%;
+    height: 280px;
+    overflow: scroll;
+}
+
+.outputTextArea {
+    font: 10pt arial, helvetica, geneva;
+    border: 1px solid #858585;
+    background-color: #FFF;
+    width: 100%;
+    height: 100px;
+    overflow: scroll;
+    text-align: left;
+}
+
+.hover {
+    background-color: #B2CDF9;
+    width: 100%;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #316AC5;
+    color: #000;
+    cursor: pointer;
+}
+
+.menu_selected {
+    text-align: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    width: 140px;
+    background-color: #CCCCFF;
+    border: outset 3px #B3B3FF;
+}
+
+.shortButton {
+    width: 50px;
+}
+
+.propertiesForm {
+    font: 10pt arial, helvetica, geneva;
+    background: white;
+    border: 1px solid lightgray;   
+    border-spacing: 1px;
+    margin: 0px 10px;
+    padding: 5px;
+}
+
+.collapsiblePropertiesHdr, .collapsiblePropertiesHdr-dis, .collapsiblePropertiesColpsdHdr, .collapsiblePropertiesColpsdHdr-dis {
+    padding-left: 24px;
+    background-color: #E2E2D9;
+    background-position: center left;
+    background-repeat: no-repeat;
+    border: 2px outset #E2E1D9;
+    font: 10pt arial, verdana, geneva;
+}
+
+.collapsiblePropertiesHdr, .collapsiblePropertiesHdr-dis {
+    background-image: url("../images/btn_arrow_down.gif");
+}
+
+.collapsiblePropertiesColpsdHdr, .collapsiblePropertiesColpsdHdr-dis {
+    background-image: url("../images/btn_arrow_next.gif");
+}
+
+.collapsiblePropertiesCnt, .collapsiblePropertiesCnt-dis {
+    background: transparent;
+    padding: 5px;
+}
+
+.propertiesGrid {
+    width: 100%;
+}
+
+.propertiesGrid_short {
+    width: 80%;
+}
+
+.propertiesGridCol1 {
+    width: 15%;
+}
+
+.propertiesGridCol2 {
+    width: 85%;
+}
+
+.propertiesGridCol3 {
+    width: 25%;
+}
+
+.oprManager_col0 {
+    width: 24px; 
+    height: 25px; 
+}
+
+.oprManager_col1 {
+    width: 305px; 
+    height: 25px; 
+}
+
+
+.oprManager_col2 {
+    width: 130px; 
+    height: 25px; 
+}
+
+
+.oprManager_col3 {
+    width: 234px; 
+    height: 25px; 
+}
+
+
+.oprManager_col4 {
+    width: 200px; 
+    height: 25px; 
+}
+
+.embedTree {
+    border: solid 1px #CCC;
+    width: 100%;
+    height: 300px;
+    overflow: scroll;    
+}
+
+.selectTagMenu {
+    width: 200px;
+}
+
+.propertiesGrid collapsible_innerPanelGrid {
+   padding-bottom: 3px; 
+   width: 600px;
+}
+
+.paramInputText {
+   background-color: #FFF7B8;
+}
+
+.summary_selected {
+   background-color: #316AC5;
+   font-weight: bold;
+   color: #FFF;
+   padding: 3px;
+}
+
+.summary_unselected {
+   background-color: none;
+}
+
+.bg_white {
+   background-color: #FFF; 
+}
