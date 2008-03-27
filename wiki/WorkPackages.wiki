@@ -1,12 +1,19 @@
 #labels Phase-Requirements
 List of work packages for beta release, scheduled 1st-May-2008
 
-==Batch Manager==
+===Batch Manager===
 Owner:Chin Fei, Requirements:
   * Support configuration of Java or Non Java base batch process via XML configuration.
-  * Support of run once process and long running process (via configuration)
+  * Support of configuration of run once process and long running process.
   * Communicate with Java process wrap by JMX agent, and obtain JVM runtime statistic to Web Admin Console 
   * Support remote logging management for Java process that utilize apache log4j API
-  * Provide constant heart beat monitoring on configure process, and notify WAC on process status, e.g process started or terminated outside WAC context.
-  * Communicate for batch execution, provide runtime statistic, and log management if available.
-  * 
+  * Provide constant heart beat monitoring on configure process, and notify WAC on process run time status status, e.g process started or terminated outside WAC.
+  * Communicate with WAC Batch, Schedule and Monitoring module for batch execution (either schedule or ad hoc), provide runtime statistic, and log management if available.
+ 
+
+===WAC Database Setup===
+Owner: James Khoo
+
+===WAC Looks and Feels===
+
+===JBPCC Project Web Page Design===
