@@ -1,7 +1,12 @@
+#labels Phase-Requirements
 List of work packages for beta release, scheduled 1st-May-2008
 
 ==Batch Manager==
-Owner:Chin Fei, Requirments:
-  * Communicate with Web Admin Console (WAC) for batch exectution, and statistic report.
-  * Owner : Chin Fei
-  * Funtionalities 
+Owner:Chin Fei, Requirements:
+  * Support configuration of Java or Non Java base batch process via XML configuration.
+  * Support of run once process and long running process (via configuration)
+  * Communicate with Java process wrap by JMX agent, and obtain JVM runtime statistic to Web Admin Console 
+  * Support remote logging management for Java process that utilize apache log4j API
+  * Provide constant heart beat monitoring on configure process, and notify WAC on process status, e.g process started or terminated outside WAC context.
+  * Communicate for batch execution, provide runtime statistic, and log management if available.
+  * 
