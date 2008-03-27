@@ -1,0 +1,4 @@
+List of work packages for beta release, scheduled 1st-May-2008
+
+==Batch Manager - Owner: Chin Fei==
+Deliever a Batch Manager that support
