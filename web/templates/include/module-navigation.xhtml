@@ -16,7 +16,7 @@
                 <div class="labelText"><ice:outputText styleClass="white" value="Module Navigation" /></div>
             </ice:panelGroup>
             <ice:form>
-                <!-- ice:panelGroup styleClass="boxContent">
+                <ice:panelGroup styleClass="boxContent">
                     <ice:tree id="tree" value="#{navigationMenuBean.model}" var="item" hideRootNode="false"
                         hideNavigation="false">
                         <ice:treeNode>
@@ -24,21 +24,20 @@
                                 <ice:panelGroup style="display: inline">
                                     <ice:graphicImage value="#{item.userObject.iconUrl}"
                                         rendered="#{item.userObject.renderIcon}" />
-                                    <ice:commandLink actionListener="#{item.userObject.getUrl}"
-                                        rendered="#{item.userObject.clickable and !item.userObject.disabled}">
+                                    <ice:commandLink actionListener="#{item.userObject.getUrl}">
                                         <ice:outputText value="#{item.userObject.text}"
                                             styleClass="#{item.userObject.selectedNode?'menu_selected':'unselected'}" />
                                     </ice:commandLink>
-                                    <ice:outputText value="#{item.userObject.text}" rendered="#{item.userObject.disabled}"
+                                    <!-- ice:outputText value="#{item.userObject.text}" rendered="#{item.userObject.disabled}"
                                         style="color: #9C9C9C" />
                                     <ice:outputText value="#{item.userObject.text}"
                                         styleClass="#{item.userObject.selectedNode?'menu_selected':'unselected'}"
-                                        rendered="#{!item.userObject.clickable}" disabled="#{item.userObject.disabled}" />
+                                        rendered="#{!item.userObject.clickable}" disabled="#{item.userObject.disabled}" / -->
                                 </ice:panelGroup>
                             </f:facet>
                         </ice:treeNode>
                     </ice:tree>
-                </ice:panelGroup -->
+                </ice:panelGroup>
             </ice:form>
         </div>
     </f:view>
