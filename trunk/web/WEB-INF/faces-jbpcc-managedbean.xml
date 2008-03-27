@@ -31,5 +31,12 @@
         </managed-property>
     </managed-bean>
     
+     <managed-bean>
+        <description>Backing bean for tree-based navigation menu.</description>
+        <managed-bean-name>navigationMenuBean</managed-bean-name>
+        <managed-bean-class>org.jbpcc.admin.beans.navigation.TreeBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
     
 </faces-config>
