@@ -1,4 +1,7 @@
 List of work packages for beta release, scheduled 1st-May-2008
 
-==Batch Manager - Owner: Chin Fei==
-Deliever a Batch Manager that support
+==Batch Manager==
+Owner:Chin Fei, Requirments:
+  * Communicate with Web Admin Console (WAC) for batch exectution, and statistic report.
+  * Owner : Chin Fei
+  * Funtionalities 
