@@ -1,13 +1,14 @@
 package org.jbpcc.admin.beans.security;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jbpcc.admin.constants.NavigationKey;
 import org.jbpcc.admin.delegates.BusinessException;
 import org.jbpcc.admin.delegates.UserLoginBD;
 import org.jbpcc.admin.jsf.JsfUtil;
+import org.apache.log4j.Logger;
 
 public class LoginBean {
+    
+    private final Logger LOGGER = Logger.getLogger(this.getClass().getName());
 
     private String loginName;
     private String loginPassword;
@@ -39,19 +40,21 @@ public class LoginBean {
     
 
     public String login() {
+        LOGGER.debug("Login with with User, name->" + loginName);
         String nextPage = NavigationKey.LOGIN_SUCCESS.getKey();
         try {
             JsfUtil.establishNewSession();
             getUserLoginBD().login(loginName, loginPassword);
 
         } catch (BusinessException ex) {
-            Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
         return nextPage;
     }
     
     
      public String logout() {
+       
         JsfUtil.cleanHttpSession();
         return NavigationKey.LOGOUT.getKey();
     }
