@@ -38,8 +38,6 @@ public class LoginBean {
     }
     
 
-  
-
     public String login() {
         String nextPage = NavigationKey.LOGIN_SUCCESS.getKey();
         try {
@@ -50,5 +48,11 @@ public class LoginBean {
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return nextPage;
+    }
+    
+    
+     public String logout() {
+        JsfUtil.cleanHttpSession();
+        return NavigationKey.LOGOUT.getKey();
     }
 }
