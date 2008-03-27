@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:jsp="http://java.sun.com/jsp">
+<body>
+<f:view>
+    <ui:composition template="/templates/main.xhtml">
+        <f:loadBundle basename="resources.messages" var="msgs" />
+        <f:loadBundle basename="resources.errormsg" var="errormsgs" />
+        <ui:define name="title">#{msgs['wac.main.title']}</ui:define>
+        <ui:define name="content">
+
+            <ice:panelGroup style="font: 110% strong arial, helvetica, geneva; color: #000; background-color:#F2F2D9;padding: 10px ">
+                <p><ice:outputText style="font-weight: bold;" value="Dummy Module one" /></p>
+                <p><ice:outputText style="margin: 0px 0px 5px 10px;" value="Blah Blah....." /></p>
+
+                <p><ice:outputText style="font-weight: bold;" value="Dummy Module two" /></p>
+                <p><ice:outputText style="margin: 0px 0px 5px 10px;" value="Dummy Module two........" /></p>
+        
+            </ice:panelGroup>
+        </ui:define>
+    </ui:composition>
+</f:view>
+</body>
+</html>
