@@ -4,62 +4,50 @@
     <description>
         Java Batch Process Control Center
     </description>
-    
     <context-param>
         <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
         <param-value>.xhtml</param-value>
     </context-param>
-    
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring/jbpcc-context.xml</param-value>
     </context-param>
-    
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
         <param-value>/WEB-INF/faces-jbpcc-managedbean.xml, /WEB-INF/faces-jbpcc-navigation.xml</param-value>
     </context-param>
-    
     <context-param>
         <param-name>com.icesoft.faces.heartbeatInterval</param-name>
         <param-value>180000</param-value>
     </context-param>
-    
     <context-param>
         <param-name>com.icesoft.faces.heartbeatTimeout</param-name>
         <param-value>180000</param-value>
     </context-param>
-    
     <context-param>
         <param-name>com.icesoft.faces.connectionTimeout</param-name>
         <param-value>180000</param-value>
     </context-param>
-    
     <context-param>
         <param-name>facelets.REFRESH_PERIOD</param-name>
         <param-value>2</param-value>
     </context-param>
-    
     <context-param>
         <param-name>facelets.DEVELOPMENT</param-name>
         <param-value>true</param-value>
     </context-param>
-    
     <context-param>
         <param-name>com.icesoft.faces.debugDOMUpdate</param-name>
         <param-value>false</param-value>
     </context-param>
-    
     <context-param>
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
         <param-value>server</param-value>
     </context-param>
-    
     <context-param>
         <param-name>com.sun.faces.validateXml</param-name>
         <param-value>true</param-value>
     </context-param>
-    
     <context-param>
         <param-name>com.sun.faces.verifyObjects</param-name>
         <param-value>true</param-value>
@@ -76,23 +64,16 @@
         <param-name>com.icesoft.faces.synchronousUpdate</param-name>
         <param-value>false</param-value>
     </context-param>
-    
-  
-    
     <listener>
         <listener-class>com.icesoft.faces.util.event.servlet.ContextEventRepeater</listener-class>
     </listener>
-    
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    
-    
     <context-param>
         <param-name>facelets.SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
-
      
     <!-- Faces Servlet -->
     <servlet>
@@ -100,13 +81,11 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    
     <servlet>
         <servlet-name>Persistent Faces Servlet</servlet-name>
         <servlet-class>com.icesoft.faces.webapp.xmlhttp.PersistentFacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    
     <servlet>
         <servlet-name>Blocking Servlet</servlet-name>
         <servlet-class>com.icesoft.faces.webapp.xmlhttp.BlockingServlet</servlet-class>
@@ -115,26 +94,35 @@
 
     
     <!-- extension mapping -->
+    <servlet>
+        <servlet-name>LoggerInitServlet</servlet-name>
+        <servlet-class>org.jbpcc.admin.servlet.LoggerInitServlet</servlet-class>
+        <init-param>
+            <param-name>log4j-init-file</param-name>
+            <param-value>WEB-INF/properties/log4j.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Persistent Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Persistent Faces Servlet</servlet-name>
         <url-pattern>*.iface</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Persistent Faces Servlet</servlet-name>
         <url-pattern>/xmlhttp/*</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Blocking Servlet</servlet-name>
         <url-pattern>/block/*</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>LoggerInitServlet</servlet-name>
+        <url-pattern>/LoggerInitServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
@@ -143,5 +131,4 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
 </web-app>
