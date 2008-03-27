@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:jsp="http://java.sun.com/jsp">
+
+<body>
+    <f:loadBundle basename="resources.messages" var="msgs" />
+    <f:view>
+        <div class="treeContainer">
+            <ice:panelGroup styleClass="boxHeader">
+                <div class="labelText"><ice:outputText styleClass="white" value="Module Navigation" /></div>
+            </ice:panelGroup>
+            <ice:form>
+                <!-- ice:panelGroup styleClass="boxContent">
+                    <ice:tree id="tree" value="#{navigationMenuBean.model}" var="item" hideRootNode="false"
+                        hideNavigation="false">
+                        <ice:treeNode>
+                            <f:facet name="icon">
+                                <ice:panelGroup style="display: inline">
+                                    <ice:graphicImage value="#{item.userObject.iconUrl}"
+                                        rendered="#{item.userObject.renderIcon}" />
+                                    <ice:commandLink actionListener="#{item.userObject.getUrl}"
+                                        rendered="#{item.userObject.clickable and !item.userObject.disabled}">
+                                        <ice:outputText value="#{item.userObject.text}"
+                                            styleClass="#{item.userObject.selectedNode?'menu_selected':'unselected'}" />
+                                    </ice:commandLink>
+                                    <ice:outputText value="#{item.userObject.text}" rendered="#{item.userObject.disabled}"
+                                        style="color: #9C9C9C" />
+                                    <ice:outputText value="#{item.userObject.text}"
+                                        styleClass="#{item.userObject.selectedNode?'menu_selected':'unselected'}"
+                                        rendered="#{!item.userObject.clickable}" disabled="#{item.userObject.disabled}" />
+                                </ice:panelGroup>
+                            </f:facet>
+                        </ice:treeNode>
+                    </ice:tree>
+                </ice:panelGroup -->
+            </ice:form>
+        </div>
+    </f:view>
+</body>
+</html>
