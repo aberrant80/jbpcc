@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:tm="http://www.experian-da.com/tallyman">
+    <link rel='STYLESHEET' type='text/css' href="${facesContext.externalContext.requestContextPath}/xmlhttp/css/xp/xp.css"/>
+    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/login.css"/>   
+    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/template.css"/>
+    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/component.css"/>
+    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/icedynamic.css"/>
+    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/tooltips.css"/>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"/>
+        <title><ui:insert name="title"/></title>
+        <f:loadBundle basename="resources.messages" var="msgs"/>
+          
+    </head>
+    <body class="body">
+        <div class="headerBg" />
+        <div class="headerBgRight"/>
+        <div id="copyright_div" class="copyrightTop">
+            <ui:include src="/templates/include/copyright.xhtml" />
+        </div>
+        <div class="errorPanel">
+            <ice:panelGroup styleClass="errorMessage" visible="false" effect="#{errorPanelBean.effect}">
+                <ice:messages id="errmsg" showDetail="true" showSummary="false" />
+            </ice:panelGroup>
+        </div>
+        <div class="logoutPanel">            
+            <ui:include src="/templates/include/header-navigation.xhtml" />
+        </div>
+        <div class="main">
+            <div id="main_div" class="bodyContainer">
+                <div id="navigation" class="sideLeftMenu">
+                    <ui:include src="/templates/include/module-navigation.xhtml" />
+                </div>
+                <div class="bodyMain">  
+                    <div id="mainContent" class="bodyLeft"> 
+                        <ui:insert name="content">Body</ui:insert>
+                    </div>                
+                    <!-- <div id="rightContent" class="bodyRight">
+                        <ui:insert name="rightContent">rightBody(border to be removed later)</ui:insert>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+      
+    </body>
+</html>
