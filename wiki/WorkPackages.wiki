@@ -11,7 +11,6 @@ Owner: Chin Fei, Requirements:
   * Provide constant heart beat monitoring on configure process, and notify WAC on process run time status status, e.g process started or terminated outside WAC.
   * Communicate with WAC Batch, Schedule and Monitoring module for batch execution (either schedule or ad hoc), provide runtime statistic, and log management if available.
 
-
 ===WAC domain model Framework===
 Owner: aberrant80
   * Deliver framework to support CRUD of WAC Domain Model, including Users, Scheduling, and ServerVO.
@@ -35,9 +34,11 @@ Owner : Ahfei78
    * Render process JVM statistics if available
    * Provide remote log management of running process if available.
 
+
 ===WAC Scheduling===
 Owner : Ahfei78
-   * Allows schedule of process across multiple server.
+   * Allows schedule of processes across multiple servers.
+
 
 
 ===JBPCC Presentation===
@@ -45,4 +46,6 @@ Owner: Lyn Yen
    * Create banner, logo for WAC
    * Page Layout, and CSS design for WAC
    * Touch up on JBPCC project page, and project's blog.
+
+
    
