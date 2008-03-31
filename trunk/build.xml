@@ -47,6 +47,7 @@
                     commons-logging-1.1.jar
                     commons-pool-1.3.jar
                     commons-digester.jar 
+                    commons-configuration-1.5.jar
                     derby.jar
                     j2ee.jar
                     jaxen-core.jar
