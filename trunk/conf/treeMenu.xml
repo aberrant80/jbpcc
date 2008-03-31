@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<appMenu label="wac.menu.modules" url="/jbpcc/templates/include/welcome.iface" icon="/images/nav_home.png">
+<appMenu label="wac.menu.modules" url="/templates/include/welcome.iface" icon="/images/nav_home.png">
 
-    <module label="wac.menu.modules.user" url="/jbpcc/mod_user_mgmt/usermanagement.xhtml"
+    <module label="wac.menu.modules.user" url="/mod_user_mgmt/usermanagement.xhtml"
         icon="/images/nav_user.png"/>
 
-    <module label="wac.menu.modules.server" url="/jbpcc/mod_server_mgmt/servermanagement.xhtml"
+    <module label="wac.menu.modules.server" url="/mod_server_mgmt/servermanagement.xhtml"
         icon="/images/nav_server_mgmt.png"/>
 
     <module label="wac.menu.modules.operations">
-        <page label="wac.menu.modules.operations.management" url="/jbpcc/mod_operations/operations.xhtml"
+        <page label="wac.menu.modules.operations.management" url="/mod_operations/operations.xhtml"
             icon="/images/nav_operation_mgmt.png"/>
-        <page label="wac.menu.modules.operations.history" url="/jbpcc/mod_operations/operationhistory.xhtml"
+        <page label="wac.menu.modules.operations.history" url="/mod_operations/operationhistory.xhtml"
             icon="/images/nav_activity_history.png"/>
     </module>
-    <module label="wac.menu.modules.scheduling" url="/jbpcc/mod_scheduling/schedulermanagement.xhtml"
+    <module label="wac.menu.modules.scheduling" url="/mod_scheduling/schedulermanagement.xhtml"
         icon="/images/nav_schedule.png"/>
 
 </appMenu>
