@@ -1,18 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.jbpcc.admin.servlet;
 
 
 import javax.servlet.http.*;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.jbpcc.admin.util.ApplicationProperties;
 
-/**
- *
- * @author jameskhoo
+/** 
+ * A Servlet to initialize log4j logger and JBPCC application properties.
  */
-public class LoggerInitServlet extends HttpServlet {
+public class JBPCCInitServlet extends HttpServlet {
 
     public void init() {
         String prefix = getServletContext().getRealPath("/");
@@ -22,6 +19,9 @@ public class LoggerInitServlet extends HttpServlet {
         if (file != null) {
             DOMConfigurator.configure(prefix + file);
         }
+        
+        String propertiesFile = getInitParameter("jbpcc-application-properties");
+        ApplicationProperties.getInstance().init(prefix + propertiesFile);
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.jbpcc.admin.delegates.BusinessException;
 import org.jbpcc.admin.delegates.UserLoginBD;
 import org.jbpcc.admin.jsf.JsfUtil;
 import org.apache.log4j.Logger;
+import org.jbpcc.admin.util.ApplicationProperties;
 
 public class LoginBean {
     
@@ -41,6 +42,7 @@ public class LoginBean {
 
     public String login() {
         LOGGER.debug("Login with with User, name->" + loginName);
+        LOGGER.debug("Derby Path set to" + ApplicationProperties.getInstance().getProperty("derby.path"));
         String nextPage = NavigationKey.LOGIN_SUCCESS.getKey();
         try {
             JsfUtil.establishNewSession();
