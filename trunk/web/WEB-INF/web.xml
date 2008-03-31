@@ -4,6 +4,7 @@
     <description>
         Java Batch Process Control Center
     </description>
+    
     <context-param>
         <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
         <param-value>.xhtml</param-value>
@@ -59,22 +60,30 @@
         <param-value>false</param-value>
     </context-param>
     
+    <context-param>
+        <param-name>log4j-init-file</param-name>
+        <param-value>WEB-INF/properties/log4j.xml</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>jbpcc-application-properties</param-name>
+        <param-value>WEB-INF/properties/jbpcc.properties</param-value>
+    </context-param>
     <!-- Asynchronous Updates -->
     <context-param>
         <param-name>com.icesoft.faces.synchronousUpdate</param-name>
         <param-value>false</param-value>
     </context-param>
-    <listener>
-        <listener-class>com.icesoft.faces.util.event.servlet.ContextEventRepeater</listener-class>
-    </listener>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    
     <context-param>
         <param-name>facelets.SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
-     
+    
+    
+    
+    
+    
     <!-- Faces Servlet -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -91,10 +100,10 @@
         <servlet-class>com.icesoft.faces.webapp.xmlhttp.BlockingServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
+    
     
     <!-- extension mapping -->
-    <servlet>
+    <!-- servlet>
         <servlet-name>JBPCCInitServlet</servlet-name>
         <servlet-class>org.jbpcc.admin.servlet.JBPCCInitServlet</servlet-class>
         <init-param>
@@ -106,7 +115,9 @@
             <param-value>WEB-INF/properties/jbpcc.properties</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-    </servlet>
+    </servlet -->
+    
+    
     <servlet-mapping>
         <servlet-name>Persistent Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
@@ -123,13 +134,26 @@
         <servlet-name>Blocking Servlet</servlet-name>
         <url-pattern>/block/*</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+    
+    <!-- servlet-mapping>
         <servlet-name>JBPCCInitServlet</servlet-name>
         <url-pattern>/JBPCCInitServlet</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping -->
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
+    
+    <listener>
+        <listener-class>com.icesoft.faces.util.event.servlet.ContextEventRepeater</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.jbpcc.admin.servlet.listener.StartUpListener</listener-class>
+    </listener>
+    
+    
     
     <!-- Welcome files -->
     <welcome-file-list>
