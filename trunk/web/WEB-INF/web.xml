@@ -95,11 +95,15 @@
     
     <!-- extension mapping -->
     <servlet>
-        <servlet-name>LoggerInitServlet</servlet-name>
-        <servlet-class>org.jbpcc.admin.servlet.LoggerInitServlet</servlet-class>
+        <servlet-name>JBPCCInitServlet</servlet-name>
+        <servlet-class>org.jbpcc.admin.servlet.JBPCCInitServlet</servlet-class>
         <init-param>
             <param-name>log4j-init-file</param-name>
             <param-value>WEB-INF/properties/log4j.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jbpcc-application-properties</param-name>
+            <param-value>WEB-INF/properties/jbpcc.properties</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -120,8 +124,8 @@
         <url-pattern>/block/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LoggerInitServlet</servlet-name>
-        <url-pattern>/LoggerInitServlet</url-pattern>
+        <servlet-name>JBPCCInitServlet</servlet-name>
+        <url-pattern>/JBPCCInitServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>15</session-timeout>
