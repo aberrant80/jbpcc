@@ -54,6 +54,7 @@ public class TreeBean implements TreeNodeSelectionHandler {
     private static final String ATTR_ICON = "icon";
     private static final String ATTR_URL = "url";
     private static final String ATTR_LABEL = "label";
+    private static final String APP_CONTEXT_PATH = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
 
     private DefaultTreeModel model;
     private UrlNodeUserObject currentNode;
@@ -77,7 +78,7 @@ public class TreeBean implements TreeNodeSelectionHandler {
             throw new IllegalArgumentException("Illegal tree menu configuration");
         }
 
-        rootObject.setUrl(docElement.getAttribute(ATTR_URL));
+        rootObject.setUrl(APP_CONTEXT_PATH + docElement.getAttribute(ATTR_URL));
         rootObject.setIconUrl(docElement.getAttribute(ATTR_ICON));
         rootObject.setSelectedNode(true);
         rootTreeNode.setUserObject(rootObject);
@@ -167,6 +168,7 @@ public class TreeBean implements TreeNodeSelectionHandler {
 
         String value = itemElement.getAttribute(ATTR_URL);
         if (StringUtils.isNotBlank(value)) {
+            value = APP_CONTEXT_PATH + value;
             menuObject.setUrl(value);
         }
 
