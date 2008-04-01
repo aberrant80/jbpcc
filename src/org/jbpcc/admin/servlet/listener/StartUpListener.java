@@ -22,6 +22,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.jbpcc.admin.util.ApplicationProperties;
+import org.jbpcc.admin.util.DBUtil;
 
 /**
  * The <code>StartUpListener</code> for JBPCC prepares the necessary properties required for proper functioning of
@@ -44,6 +45,8 @@ public class StartUpListener implements ServletContextListener {
         
         String propertiesFile = (String) event.getServletContext().getInitParameter("jbpcc-application-properties");
         ApplicationProperties.init(prefix + propertiesFile);
+        
+        DBUtil.initJBPCCDB(prefix);
          
     }
 
