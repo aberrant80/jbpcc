@@ -14,10 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
 package org.jbpcc.admin.servlet.listener;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Iterator;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -30,24 +35,58 @@ import org.jbpcc.admin.util.DBUtil;
  */
 public class StartUpListener implements ServletContextListener {
 
+    private static String JBPCC_DB_DRIVER_KEY = "jbpcc.db.driver";
+    private static String JBPCC_DB_URL_KEY = "jbpcc.db.url";
+    private static String JBPCC_DB_DRIVER_TOKEN = "%jbpcc.db.driver%";
+    private static String JBPCC_DB_URL_TOKEN = "%jbpcc.db.url%";
+    private static String JBPCC_PROPERTIES_DIR = File.separator + "WEB-INF" + File.separator + "properties" + File.separator;
+    private static String JBPCC_JPA_TEMPLATE_FILE_NAME = "persistence_template.xml";
+    private static String JBPCC_JPA_CONFIG_FILE_NAME = "persistence.xml";
+
     public void contextDestroyed(ServletContextEvent event) {
     }
 
     public void contextInitialized(ServletContextEvent event) {
         String prefix = event.getServletContext().getRealPath("/");
         String file = (String) event.getServletContext().getInitParameter("log4j-init-file");
-        System.out.println("Init log config ->" + prefix + file);
-        // if the log4j-init-file is not set, then no point in trying
-        
+
         if (file != null) {
             DOMConfigurator.configure(prefix + file);
         }
-        
+
         String propertiesFile = (String) event.getServletContext().getInitParameter("jbpcc-application-properties");
         ApplicationProperties.init(prefix + propertiesFile);
-        
+
         DBUtil.initJBPCCDB(prefix);
-         
+        generetePersistanceConfigFromTemplate(prefix);
+
     }
 
+    private void generetePersistanceConfigFromTemplate(String contextPath) {
+        File template = new File(contextPath + JBPCC_PROPERTIES_DIR + JBPCC_JPA_TEMPLATE_FILE_NAME);
+        File target = new File(contextPath + JBPCC_PROPERTIES_DIR + JBPCC_JPA_CONFIG_FILE_NAME);
+        try {
+            System.out.println("Template at " + template);
+            System.out.println("Target at " + target);
+            BufferedReader in = new BufferedReader(new FileReader(template));
+            BufferedWriter out = new BufferedWriter(new FileWriter(target));
+            String line = null;
+
+            while ((line = in.readLine()) != null) {
+                if (line.indexOf(JBPCC_DB_DRIVER_TOKEN) >= 0) { 
+                    line = line.replaceAll(JBPCC_DB_DRIVER_TOKEN, ApplicationProperties.getInstance().getProperty(JBPCC_DB_DRIVER_KEY));
+                } 
+                if (line.indexOf(JBPCC_DB_URL_TOKEN) >= 0) {  
+                    line = line.replaceAll(JBPCC_DB_URL_TOKEN, ApplicationProperties.getInstance().getProperty(JBPCC_DB_URL_TOKEN));
+                }
+                out.write(line + "\n");
+            }
+
+            out.close();
+            in.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+    }
 }

@@ -2,6 +2,7 @@
 
 package org.jbpcc.admin.util;
 
+import java.util.logging.Level;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
@@ -37,7 +38,16 @@ public class ApplicationProperties {
            value = config.getString(paraName);
        }
        return value;
-   }    
+   }   
+   
+   public void setProperty(String paraName, String paraValue) {
+        try {
+            config.setProperty(paraName, paraValue);
+            config.save();
+        } catch (ConfigurationException ex) {
+           ex.printStackTrace();
+        }
+   }
      
 
 }

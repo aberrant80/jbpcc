@@ -18,6 +18,14 @@
 package org.jbpcc.domain.model;
 
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -27,12 +35,27 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * A VO to store JBPCC login user data
  * @version $Revision:  $
  */
-public class UserVO extends ValueObject {
+@Entity
+@Table(name="JBPCC_USERS")
+@NamedQueries({
+    @NamedQuery(name="UserVO.findByLoginID",
+        query="SELECT u FROM UserVO u WHERE u.loginName =:loginID"),
+    @NamedQuery(name="UserVO.findAll",
+        query="SELECT u FROM UserVO u")
+})
+public class UserVO implements Cloneable, Serializable {
+    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
     private String loginName;
     private String password;
+    private String surName;
+    private String foreName;
+    private Boolean enabled;
 
     public UserVO() {
     }
+    
+    
 
     public UserVO(String loginName, String password) {
         this.loginName = loginName;
@@ -56,14 +79,39 @@ public class UserVO extends ValueObject {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    
-   @Override
-    public ValueObject clone() throws CloneNotSupportedException {
-        UserVO clone = (UserVO) super.clone();
-        return clone;
+
+    public Boolean getEnabled() {
+        return enabled;
     }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getForeName() {
+        return foreName;
+    }
+
+    public void setForeName(String foreName) {
+        this.foreName = foreName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+    
 
     @Override
     public String toString() {

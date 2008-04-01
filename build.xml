@@ -50,6 +50,7 @@
                     commons-digester.jar 
                     commons-configuration-1.5.jar
                     derby.jar
+                    openjpa-1.0.2.jar
                     j2ee.jar
                     jaxen-core.jar
                     jaxen-jdom.jar
