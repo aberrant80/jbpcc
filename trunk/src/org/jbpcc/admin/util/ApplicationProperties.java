@@ -4,8 +4,10 @@ package org.jbpcc.admin.util;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.log4j.Logger;
 
 public class ApplicationProperties {
+    private static final Logger LOGGER = Logger.getLogger(ApplicationProperties.class.getName());
     private static ApplicationProperties instance = null;
     private static PropertiesConfiguration config = null;
     
@@ -16,7 +18,7 @@ public class ApplicationProperties {
         try {
             config = new PropertiesConfiguration(fileName);
         } catch (ConfigurationException ex) {
-           ex.printStackTrace();
+           LOGGER.error(ex, ex.getCause());
         }
         
     }

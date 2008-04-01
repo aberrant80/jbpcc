@@ -18,6 +18,7 @@
         <property name="build.dir" location="${basedir}/build/" />
         <property name="build.classes.dir" location="${build.dir}/classes/" />
         <property name="dist.dir" location="${basedir}/dist/" />
+        <property name="schemas.dir" location="${basedir}/schemas/" />
         
         <!-- Unit testing -->
         <property name="test.dir" location="${basedir}/test/" />
@@ -140,6 +141,10 @@
             <patternset refid="patternset.properties" />
         </fileset>
         
+        <fileset id="jbpcc.schemas.sql.fileset" dir="${schemas.dir}">
+            <include name="**/*.sql"/>
+        </fileset>    
+        
         <!-- Cobertura tasks and targets -->
         <taskdef classpathref="test.class.path" resource="tasks.properties" />
     </target>
@@ -205,15 +210,15 @@
     >
         
         <!-- This one is under the parent project's dist tree -->
-        <property name="webadmin.installer.file" location="${dist.dir}/${war.name}.war" />
-        <delete file="${webadmin.installer.file}" />
+        <property name="jbpcc.installer.file" location="${dist.dir}/${war.name}.war" />
+        <delete file="${jbpcc.installer.file}" />
     </target>
     
     <target name="war-core"
             depends="war-init"
     >
         <!-- -->
-        <war destfile="${webadmin.installer.file}"
+        <war destfile="${jbpcc.installer.file}"
              webxml="${web.webinf.dir}/web.xml"
              >
             
@@ -222,6 +227,8 @@
             
             <!-- Needed properties -->
             <webinf prefix="WEB-INF/properties" refid="jbpcc.properties.fileset" />
+            
+            <webinf prefix="WEB-INF/schemas" refid="jbpcc.schemas.sql.fileset" />
             
             <!-- Resource bundles -->
             <webinf prefix="WEB-INF/classes/resources" dir="${res.dir}">
