@@ -27,7 +27,7 @@ public class DBUtil {
     private static String JBPCC_DB_QUARTZ_SQL_FILE ="jbpcc.db.quartz.sql.file";
     private static String DERBY_DB_TOKEN = "%derby.path%";
     private static String CHECK_JBPCC_SCHEMA_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'JBPCC_%'";
-    private static String CHECK_JBPCC_QUARTZ_TABLE_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'qrtz%'";
+    private static String CHECK_JBPCC_QUARTZ_TABLE_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'QRTZ%'";
     
     
     public synchronized static void initJBPCCDB(String applicationPath) {
@@ -42,6 +42,7 @@ public class DBUtil {
             String derby_path = ApplicationProperties.getInstance().getProperty(DERBY_PATH);
 
             url = url.replaceFirst(DERBY_DB_TOKEN, derby_path);
+            ApplicationProperties.getInstance().setProperty(JBPCC_DB_URL, url);
             LOGGER.debug("Attemp to connect to Derby Database: " + url);
 
             conn = DriverManager.getConnection(url);
@@ -53,6 +54,8 @@ public class DBUtil {
                 String sqlFileName = ApplicationProperties.getInstance().getProperty(JBPCC_DB_SQL_FILE);
                 setupDBObject(conn, sqlFileName, applicationPath);
                 LOGGER.debug("JBPCC schema initalized");
+            } else {
+                LOGGER.debug("JBPCC schema esists");
             }
             
             LOGGER.debug("Check if QUARTZ schema exists");
@@ -61,6 +64,8 @@ public class DBUtil {
                 String sqlFileName = ApplicationProperties.getInstance().getProperty(JBPCC_DB_QUARTZ_SQL_FILE);
                 setupDBObject(conn, sqlFileName, applicationPath);
                 LOGGER.debug("JBPCC Quarrz schema initalized");
+            } else {
+                LOGGER.debug("JBPCC QUARTZ schema exists");
             }
 
         } catch (Exception ex) {
