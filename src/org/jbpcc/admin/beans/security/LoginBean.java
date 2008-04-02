@@ -42,14 +42,13 @@ public class LoginBean {
 
     public String login() {
         LOGGER.debug("Login with with User, name->" + loginName);
-        LOGGER.debug("Derby Path set to" + ApplicationProperties.getInstance().getProperty("derby.path"));
         String nextPage = NavigationKey.LOGIN_SUCCESS.getKey();
         try {
             JsfUtil.establishNewSession();
             getUserLoginBD().login(loginName, loginPassword);
 
         } catch (BusinessException ex) {
-           
+           nextPage = NavigationKey.LOGIN_FAILURE.getKey();
         }
         return nextPage;
     }

@@ -22,7 +22,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -39,7 +39,9 @@ public class StartUpListener implements ServletContextListener {
     private static String JBPCC_DB_URL_KEY = "jbpcc.db.url";
     private static String JBPCC_DB_DRIVER_TOKEN = "%jbpcc.db.driver%";
     private static String JBPCC_DB_URL_TOKEN = "%jbpcc.db.url%";
-    private static String JBPCC_PROPERTIES_DIR = File.separator + "WEB-INF" + File.separator + "properties" + File.separator;
+    private static String JBPCC_WEB_INF_DIR = File.separator + "WEB-INF" + File.separator;
+    private static String JBPCC_PROPERTIES_DIR = JBPCC_WEB_INF_DIR + "properties" + File.separator;
+    private static String JBPCC_META_CLASS_DIR = JBPCC_WEB_INF_DIR + "classes" + File.separator + "META-INF";
     private static String JBPCC_JPA_TEMPLATE_FILE_NAME = "persistence_template.xml";
     private static String JBPCC_JPA_CONFIG_FILE_NAME = "persistence.xml";
 
@@ -64,20 +66,25 @@ public class StartUpListener implements ServletContextListener {
 
     private void generetePersistanceConfigFromTemplate(String contextPath) {
         File template = new File(contextPath + JBPCC_PROPERTIES_DIR + JBPCC_JPA_TEMPLATE_FILE_NAME);
-        File target = new File(contextPath + JBPCC_PROPERTIES_DIR + JBPCC_JPA_CONFIG_FILE_NAME);
+        File metainfDir = new File(contextPath + JBPCC_META_CLASS_DIR);
+      
         try {
-            System.out.println("Template at " + template);
-            System.out.println("Target at " + target);
+            if(!metainfDir.exists()) {
+                metainfDir.mkdir();
+            }
+            File target = new File(metainfDir.getAbsolutePath() + File.separator +  JBPCC_JPA_CONFIG_FILE_NAME);
             BufferedReader in = new BufferedReader(new FileReader(template));
             BufferedWriter out = new BufferedWriter(new FileWriter(target));
             String line = null;
+            String driver = ApplicationProperties.getInstance().getProperty(JBPCC_DB_DRIVER_KEY);
+            String url = ApplicationProperties.getInstance().getProperty(JBPCC_DB_URL_KEY);
 
             while ((line = in.readLine()) != null) {
-                if (line.indexOf(JBPCC_DB_DRIVER_TOKEN) >= 0) { 
-                    line = line.replaceAll(JBPCC_DB_DRIVER_TOKEN, ApplicationProperties.getInstance().getProperty(JBPCC_DB_DRIVER_KEY));
+                if (line.indexOf(JBPCC_DB_DRIVER_TOKEN) >= 0) {
+                    line = line.replaceFirst(JBPCC_DB_DRIVER_TOKEN, driver);
                 } 
                 if (line.indexOf(JBPCC_DB_URL_TOKEN) >= 0) {  
-                    line = line.replaceAll(JBPCC_DB_URL_TOKEN, ApplicationProperties.getInstance().getProperty(JBPCC_DB_URL_TOKEN));
+                    line = line.replaceFirst(JBPCC_DB_URL_TOKEN, url);
                 }
                 out.write(line + "\n");
             }

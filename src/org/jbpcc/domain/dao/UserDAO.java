@@ -21,6 +21,6 @@ import java.util.List;
 import org.jbpcc.domain.model.UserVO;
 
 public interface UserDAO {
-    public UserVO findUserByLoginID(String loginID);
+    public UserVO findUserByLoginID(String loginID) throws DAOFinderException;
     public List<UserVO> findAllUsers();
 }
