@@ -15,14 +15,20 @@
  * limitations under the License.
  */
 
-package org.jbpcc.domain.dao.jpa;
 
-import javax.persistence.EntityManager;
+package org.jbpcc.domain.dao;
 
 
-public class BaseJPA {
-    public EntityManager getEntityManager(){
-        return EntityManagerAccessor.getInstance().getEntityManager();
+public class DAOFinderException extends Exception { 
+    public DAOFinderException() {
+        super();
     }
-
+    
+    public DAOFinderException(String errMsg) {
+        super(errMsg);
+    }
+    
+    public DAOFinderException(String errMsg, Throwable t) {
+        super(errMsg, t);
+    }
 }

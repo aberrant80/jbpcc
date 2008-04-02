@@ -35,6 +35,10 @@
         <property name="build.coverage.report.dir" location="${build.dir}/coverage/" />
         <property name="build.cobertura.datafile" location="${build.dir}/cobertura.ser" />
         <property name="build.instrumented.classes.dir" location="${build.dir}/instrumented-classes/" />
+        
+        
+        
+        
         <patternset id="jbpcc.required.jars"
                     includes="
                     commons-beanutils.jar
@@ -50,7 +54,6 @@
                     commons-digester.jar 
                     commons-configuration-1.5.jar
                     derby.jar
-                    openjpa-1.0.2.jar
                     j2ee.jar
                     jaxen-core.jar
                     jaxen-jdom.jar
@@ -59,9 +62,13 @@
                     log4j.jar
                     quartz-1.6.0.jar
                     saxpath.jar
-                    toplink-essentials*.jar
                     "
         />
+        
+        <!-- JPA Provider PATH, either toplink or openjpa -->
+        <property name="jpa.provider" value="toplink"/>
+        <property name="jpa.lib.dir" value="${lib.dir}/jpa_provider/${jpa.provider}"/>
+        
         
         <patternset id="common.icefaces.lib.jars.to.include"
                     includes="
@@ -119,6 +126,7 @@
              <fileset dir="${lib.dir}">
                 <patternset refid="jsf.lib.jars.to.deploy"/>
             </fileset>
+            <fileset dir="${jpa.lib.dir}" includes="**/*.jar"/>
         </path>
         
         <!-- Declare classpath for unit testing classes -->
@@ -250,6 +258,9 @@
             </lib>
             <lib dir="${lib.dir}" >
                 <patternset refid="jsf.lib.jars.to.deploy" />
+            </lib>
+            <lib dir="${jpa.lib.dir}" >
+                <include name="**/*.jar"/>
             </lib>
             
             <!-- The actual pages and view snippets -->

@@ -20,18 +20,27 @@ package org.jbpcc.domain.dao.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import org.jbpcc.domain.dao.DAOFinderException;
 import org.jbpcc.domain.dao.UserDAO;
 import org.jbpcc.domain.model.UserVO;
 
 
 public class JPAUserDAO extends BaseJPA implements UserDAO {
 
-    public UserVO findUserByLoginID(String loginID) {
+    public UserVO findUserByLoginID(String loginID)  throws DAOFinderException {
+        
         UserVO vo = null;
+        EntityManager em = getEntityManager();
+        try {
         vo = (UserVO) getEntityManager().createNamedQuery("UserVO.findByLoginID")
                 .setParameter("loginID", loginID)
                 .getSingleResult();
-        
+        } catch (Exception e) {
+            throw new DAOFinderException("Problem of findUserByLoginID:" + loginID, e.getCause());
+        } finally {
+            em.close();
+        }
         return vo;
     }
 

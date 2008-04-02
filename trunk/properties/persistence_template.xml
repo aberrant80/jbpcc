@@ -1,11 +1,22 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-  <persistence-unit name="jbpcc">
-    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-    <class>org.jbpcc.domain.model.UserVO</class>
-    <properties>
-      <property name="jbpcc.ConnectionURL" value="%jbpcc.db.url%"/>
-      <property name="jbpcc.ConnectionDriverName" value="%jbpcc.db.driver%"/>
-      <property name="jbpcc.Log" value="DefaultLevel=WARN, Tool=INFO"/>
-    </properties>
-  </persistence-unit>
+    <persistence-unit name="jbpcc"  transaction-type="RESOURCE_LOCAL">
+         <!-- Using Oracle TopLink JPA -->
+        <provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
+        <class>org.jbpcc.domain.model.UserVO</class>
+        <properties>
+            <property name="toplink.jdbc.driver" value="%jbpcc.db.driver%"/>
+            <property name="toplink.jdbc.url" value="%jbpcc.db.url%"/>
+        </properties>
+        
+        
+        <!-- Using Apache Open JPA -->
+        <!-- provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <class>org.jbpcc.domain.model.UserVO</class>
+        <properties>
+            <property name="openjpa.ConnectionURL" value="%jbpcc.db.url%"/>
+            <property name="openjpa.ConnectionDriverName" value="%jbpcc.db.driver%"/>
+        </properties -->
+        
+       
+    </persistence-unit>
 </persistence>
