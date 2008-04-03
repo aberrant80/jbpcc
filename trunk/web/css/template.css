@@ -50,7 +50,7 @@ html>body .main { /*child selector combinator for non IE/Win */
 
 .headerBg {
 	display: block;
-	background-image: url(/jbpcc/images/tile_header.jpg);
+	background-image: url(../images/tile_header.jpg);
 	background-repeat: repeat-x;
 	margin: 0px;
 	padding: 0px;
@@ -63,7 +63,7 @@ html>body .main { /*child selector combinator for non IE/Win */
 
 .headerBgRight {
 	display: block;
-	background-image: url(/jbpcc/images/clip_corner.jpg);
+	background-image: url(../images/clip_green_corner.jpg);
 	background-repeat: no-repeat;
 	margin: 0px;
 	padding: 0px;
@@ -226,7 +226,7 @@ html>body .errorPanel {/*child selector combinator for non IE/Win */
 	height: 20px;
 	width: 250px;
 	border: solid 2px #C9C9C9;
-	background-image: url(/jbpcc/images/tile_navyblue.gif);
+	background-image: url(../images/tile_navyblue.gif);
 	background-repeat: repeat;
 	text-align: center;
 	z-index: 10;

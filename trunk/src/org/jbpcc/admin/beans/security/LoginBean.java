@@ -5,7 +5,8 @@ import org.jbpcc.admin.delegates.BusinessException;
 import org.jbpcc.admin.delegates.UserLoginBD;
 import org.jbpcc.admin.jsf.JsfUtil;
 import org.apache.log4j.Logger;
-import org.jbpcc.admin.util.ApplicationProperties;
+import org.jbpcc.admin.constants.SessionObjectKey;
+import org.jbpcc.domain.model.UserVO;
 
 public class LoginBean {
     
@@ -43,9 +44,12 @@ public class LoginBean {
     public String login() {
         LOGGER.debug("Login with with User, name->" + loginName);
         String nextPage = NavigationKey.LOGIN_SUCCESS.getKey();
+        UserVO vo = null;
         try {
             JsfUtil.establishNewSession();
-            getUserLoginBD().login(loginName, loginPassword);
+            vo = getUserLoginBD().login(loginName, loginPassword);
+            JsfUtil.storeOnSession(SessionObjectKey.LOGIN, vo);
+            
 
         } catch (BusinessException ex) {
            nextPage = NavigationKey.LOGIN_FAILURE.getKey();

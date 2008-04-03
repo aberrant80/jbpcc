@@ -20,15 +20,15 @@ import org.apache.log4j.Logger;
 public class DBUtil {
 
     private static final Logger LOGGER = Logger.getLogger(DBUtil.class.getName());
-    private static String JBPCC_DB_DRIVER = "jbpcc.db.driver";
-    private static String JBPCC_DB_URL = "jbpcc.db.url";
-    private static String DERBY_PATH = "derby.path";
-    private static String JBPCC_DB_SQL_FILE = "jbpcc.db.sql.file";
-    private static String JBPCC_DB_QUARTZ_SQL_FILE ="jbpcc.db.quartz.sql.file";
-    private static String DERBY_DB_TOKEN = "%derby.path%";
-    private static String CHECK_JBPCC_SCHEMA_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'JBPCC_%'";
-    private static String CHECK_JBPCC_QUARTZ_TABLE_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'QRTZ%'";
-    
+    private static final String JBPCC_DB_DRIVER = "jbpcc.db.driver";
+    private static final String JBPCC_DB_URL = "jbpcc.db.url";
+    private static final String DERBY_PATH = "derby.path";
+    private static final String JBPCC_DB_SQL_FILE = "jbpcc.db.sql.file";
+    private static final String JBPCC_DB_QUARTZ_SQL_FILE ="jbpcc.db.quartz.sql.file";
+    private static final String DERBY_DB_TOKEN = "%derby.path%";
+    private static final String CHECK_JBPCC_SCHEMA_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'JBPCC_%'";
+    private static final String CHECK_JBPCC_QUARTZ_TABLE_SQL = "SELECT count(*) FROM SYS.SYSTABLES WHERE TABLENAME like 'QRTZ%'";
+    private static final String SQL_FILE_REMARK_STRING = "--";
     
     public synchronized static void initJBPCCDB(String applicationPath) {
         Connection conn = null;
@@ -109,7 +109,9 @@ public class DBUtil {
         
         LineNumberReader reader = new LineNumberReader(new FileReader(sqlFile));
         while( (line = reader.readLine()) != null) {
-            buf.append(line);
+            if(!line.startsWith(SQL_FILE_REMARK_STRING)) {
+                buf.append(line);
+            }
         }
         
         StringTokenizer tokenizer = new StringTokenizer(buf.toString(), ";");

@@ -26,14 +26,14 @@ import org.jbpcc.domain.dao.UserDAO;
 import org.jbpcc.domain.model.UserVO;
 
 
-public class JPAUserDAO extends BaseJPA implements UserDAO {
-
+public class JPAUserDAO extends BaseJPADAO <UserVO, Integer> implements UserDAO {
+    
     public UserVO findUserByLoginID(String loginID)  throws DAOFinderException {
         
         UserVO vo = null;
         EntityManager em = getEntityManager();
         try {
-        vo = (UserVO) getEntityManager().createNamedQuery("UserVO.findByLoginID")
+        vo = (UserVO) getEntityManager().createNamedQuery(UserVO.QUERY_FIND_USER_BY_LOGIN_ID)
                 .setParameter("loginID", loginID)
                 .getSingleResult();
         } catch (Exception e) {

@@ -14,55 +14,61 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.jbpcc.domain.model;
 
-
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-
 
 /**
  * A VO to store JBPCC login user data
  * @version $Revision:  $
  */
 @Entity
-@Table(name="JBPCC_USERS")
+@Table(name = "JBPCC_USERS")
 @NamedQueries({
-    @NamedQuery(name="UserVO.findByLoginID",
-        query="SELECT u FROM UserVO u WHERE u.loginName =:loginID"),
-    @NamedQuery(name="UserVO.findAll",
-        query="SELECT u FROM UserVO u")
+    @NamedQuery(name = UserVO.QUERY_FIND_USER_BY_LOGIN_ID,
+    query = "SELECT u FROM UserVO u WHERE u.loginName =:loginID")
 })
 public class UserVO implements Cloneable, Serializable {
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+
+    public static final String QUERY_FIND_USER_BY_LOGIN_ID = "UserVO.findByLoginID";
+    
+    @Id
+    @TableGenerator(name = "USERS_GEN", table = "JBPCC_IDGEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "USERS_GEN")
+    @GeneratedValue(generator = "USERS_GEN")
+    private Integer id;
     private String loginName;
     private String password;
     private String surName;
     private String foreName;
     private Boolean enabled;
+    
+    @ManyToMany
+    @JoinTable(name = "JBPCC_USERSERVERS",
+    joinColumns = @JoinColumn(name = "USERID"),
+    inverseJoinColumns = @JoinColumn(name = "SERVERID"))
+    private List<ServerVO> assignedServers;
 
     public UserVO() {
     }
-    
-    
 
     public UserVO(String loginName, String password) {
         this.loginName = loginName;
         this.password = password;
     }
-    
-    
 
     public String getLoginName() {
         return loginName;
@@ -96,11 +102,11 @@ public class UserVO implements Cloneable, Serializable {
         this.foreName = foreName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -111,7 +117,14 @@ public class UserVO implements Cloneable, Serializable {
     public void setSurName(String surName) {
         this.surName = surName;
     }
-    
+
+    public List<ServerVO> getAssignedServers() {
+        return assignedServers;
+    }
+
+    public void setAssignedServers(List<ServerVO> assignedServers) {
+        this.assignedServers = assignedServers;
+    }
 
     @Override
     public String toString() {
@@ -127,5 +140,4 @@ public class UserVO implements Cloneable, Serializable {
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
-
 }

@@ -15,10 +15,13 @@
  * limitations under the License.
  */
 
-package org.jbpcc.domain.dao;
 
-import org.jbpcc.domain.model.UserVO;
+package org.jbpcc.domain.dao.jpa;
 
-public interface UserDAO extends BaseDAO<UserVO, Integer> {
-    public UserVO findUserByLoginID(String loginID) throws DAOFinderException;
+import org.jbpcc.domain.dao.ServerDAO;
+import org.jbpcc.domain.model.ServerVO;
+
+public class JPAServerDAO extends BaseJPADAO <ServerVO, Integer> implements ServerDAO {
+
+
 }
