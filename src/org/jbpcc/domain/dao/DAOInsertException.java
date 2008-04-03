@@ -15,10 +15,20 @@
  * limitations under the License.
  */
 
+
 package org.jbpcc.domain.dao;
 
-import org.jbpcc.domain.model.UserVO;
 
-public interface UserDAO extends BaseDAO<UserVO, Integer> {
-    public UserVO findUserByLoginID(String loginID) throws DAOFinderException;
+public class DAOInsertException extends Exception { 
+    public DAOInsertException() {
+        super();
+    }
+    
+    public DAOInsertException(String errMsg) {
+        super(errMsg);
+    }
+    
+    public DAOInsertException(String errMsg, Throwable t) {
+        super(errMsg, t);
+    }
 }
