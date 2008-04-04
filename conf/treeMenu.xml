@@ -5,7 +5,7 @@
     <module label="wac.menu.modules.user" url="/mod_user_mgmt/usermanagement.xhtml"
         icon="/images/nav_user.png"/>
 
-    <module label="wac.menu.modules.server" url="/mod_server_mgmt/servermanagement.xhtml"
+    <module label="wac.menu.modules.batch.manager" url="/mod_batchmanager_mgmt/batchmgr_management.xhtml"
         icon="/images/nav_server_mgmt.png"/>
 
     <module label="wac.menu.modules.operations">

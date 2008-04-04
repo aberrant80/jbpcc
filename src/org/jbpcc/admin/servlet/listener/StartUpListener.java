@@ -49,19 +49,18 @@ public class StartUpListener implements ServletContextListener {
     }
 
     public void contextInitialized(ServletContextEvent event) {
-        String prefix = event.getServletContext().getRealPath("/");
-        String file = (String) event.getServletContext().getInitParameter("log4j-init-file");
+            String prefix = event.getServletContext().getRealPath("/");
+            String file = (String) event.getServletContext().getInitParameter("log4j-init-file");
 
-        if (file != null) {
-            DOMConfigurator.configure(prefix + file);
-        }
+            if (file != null) {
+                DOMConfigurator.configure(prefix + file);
+            }
 
-        String propertiesFile = (String) event.getServletContext().getInitParameter("jbpcc-application-properties");
-        ApplicationProperties.init(prefix + propertiesFile);
+            String propertiesFile = (String) event.getServletContext().getInitParameter("jbpcc-application-properties");
+            ApplicationProperties.init(prefix + propertiesFile);
 
-        DBUtil.initJBPCCDB(prefix);
-        generetePersistanceConfigFromTemplate(prefix);
-
+            DBUtil.initJBPCCDB(prefix);
+            generetePersistanceConfigFromTemplate(prefix);
     }
 
     private void generetePersistanceConfigFromTemplate(String contextPath) {

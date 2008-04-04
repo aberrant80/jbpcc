@@ -57,10 +57,10 @@ public class UserVO implements Cloneable, Serializable {
     private Boolean enabled;
     
     @ManyToMany
-    @JoinTable(name = "JBPCC_USERSERVERS",
+    @JoinTable(name = "JBPCC_USER_BATCH_MANAGER",
     joinColumns = @JoinColumn(name = "USERID"),
-    inverseJoinColumns = @JoinColumn(name = "SERVERID"))
-    private List<ServerVO> assignedServers;
+    inverseJoinColumns = @JoinColumn(name = "MANAGERID"))
+    private List<BatchManagerVO> assignedBatchManagers;
 
     public UserVO() {
     }
@@ -118,12 +118,12 @@ public class UserVO implements Cloneable, Serializable {
         this.surName = surName;
     }
 
-    public List<ServerVO> getAssignedServers() {
-        return assignedServers;
+    public List<BatchManagerVO> getAssignedBatchManagers() {
+        return assignedBatchManagers;
     }
 
-    public void setAssignedServers(List<ServerVO> assignedServers) {
-        this.assignedServers = assignedServers;
+    public void setAssignedBatchManagers(List<BatchManagerVO> assignedBatchManagers) {
+        this.assignedBatchManagers = assignedBatchManagers;
     }
 
     @Override
