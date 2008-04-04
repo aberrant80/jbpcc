@@ -35,12 +35,12 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * A VO to store JBPCC Server Config Data
  */
 @Entity
-@Table(name = "JBPCC_SERVERS")
-public class ServerVO implements Cloneable, Serializable {
+@Table(name = "JBPCC_BATCH_MANAGERS")
+public class BatchManagerVO implements Cloneable, Serializable {
 
     @Id
-    @TableGenerator(name = "SERVERS_GEN", table = "JBPCC_IDGEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "SERVERS_GEN")
-    @GeneratedValue(generator = "SERVERS_GEN")
+    @TableGenerator(name = "BATCH_MANAGER_GEN", table = "JBPCC_IDGEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "BATCH_MANAGER_GEN")
+    @GeneratedValue(generator = "BATCH_MANAGER_GEN")
     private Integer id;
     private String name;
     private String jmxAgentName;
@@ -49,17 +49,16 @@ public class ServerVO implements Cloneable, Serializable {
     private String userName;
     private String password;
     
-    @ManyToMany(mappedBy = "assignedServers",
-                fetch = FetchType.EAGER)
-    @JoinTable(name = "JBPCC_USERSERVERS",
-    joinColumns = @JoinColumn(name = "SERVERID"),
+    @ManyToMany(mappedBy = "assignedBatchManagers")
+    @JoinTable(name = "JBPCC_USER_BATCH_MANAGER",
+    joinColumns = @JoinColumn(name = "MANAGERID"),
     inverseJoinColumns = @JoinColumn(name = "USERID"))
     private List<UserVO> userVOList;
 
-    public ServerVO() {
+    public BatchManagerVO() {
     }
 
-    public ServerVO(String name, String jmxAgentName, String ip, Integer port) {
+    public BatchManagerVO(String name, String jmxAgentName, String ip, Integer port) {
         this.name = name;
         this.jmxAgentName = jmxAgentName;
         this.ip = ip;

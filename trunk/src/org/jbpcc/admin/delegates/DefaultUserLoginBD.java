@@ -5,8 +5,7 @@ import org.jbpcc.admin.constants.ErrorMessageKey;
 import org.jbpcc.domain.dao.DAOFinderException;
 import org.jbpcc.domain.model.UserVO;
 import org.jbpcc.domain.dao.UserDAO;
-import org.jbpcc.domain.dao.jpa.JPAServerDAO;
-import org.jbpcc.domain.model.ServerVO;
+import org.jbpcc.domain.model.BatchManagerVO;
 
 public class DefaultUserLoginBD implements UserLoginBD {
 
@@ -32,12 +31,10 @@ public class DefaultUserLoginBD implements UserLoginBD {
 
         // Testing only
         try {
-            ServerVO sVO = new ServerVO("Agent3", "Server3", "localhost", 8574);
-            JPAServerDAO sDAO = new JPAServerDAO();
-            sDAO.create(sVO);
+            BatchManagerVO bVO = new BatchManagerVO("Agent3", "Server3", "localhost", 8574);
             
             // Try to add the newly created ServerVO to user assigned ServerList
-            vo.getAssignedServers().add(sVO);
+            vo.getAssignedBatchManagers().add(bVO);
             dao.update(vo);
             
         } catch (Exception exp) {

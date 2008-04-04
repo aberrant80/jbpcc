@@ -17,7 +17,7 @@
 
 package org.jbpcc.domain.dao;
 
-import org.jbpcc.domain.model.ServerVO;
+import org.jbpcc.domain.model.BatchManagerVO;
 
-public interface ServerDAO extends BaseDAO<ServerVO, Integer> {
+public interface BatchManagerDAO extends BaseDAO<BatchManagerVO, Integer> {
 }

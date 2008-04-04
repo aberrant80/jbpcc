@@ -5,7 +5,7 @@
          <!-- Using Oracle TopLink JPA -->
         <provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
         <class>org.jbpcc.domain.model.UserVO</class>
-        <class>org.jbpcc.domain.model.ServerVO</class>
+        <class>org.jbpcc.domain.model.BatchManagerVO</class>
         <properties>
             <property name="toplink.jdbc.driver" value="%jbpcc.db.driver%"/>
             <property name="toplink.jdbc.url" value="%jbpcc.db.url%"/>
@@ -15,7 +15,7 @@
         <!-- Using Apache Open JPA -->
         <!-- provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <class>org.jbpcc.domain.model.UserVO</class>
-        <class>org.jbpcc.domain.model.ServerVO</class>
+        <class>org.jbpcc.domain.model.BatchManagerVO</class>
         <properties>
             <property name="openjpa.ConnectionURL" value="%jbpcc.db.url%"/>
             <property name="openjpa.ConnectionDriverName" value="%jbpcc.db.driver%"/>

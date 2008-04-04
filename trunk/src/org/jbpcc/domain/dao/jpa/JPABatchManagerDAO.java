@@ -18,10 +18,10 @@
 
 package org.jbpcc.domain.dao.jpa;
 
-import org.jbpcc.domain.dao.ServerDAO;
-import org.jbpcc.domain.model.ServerVO;
+import org.jbpcc.domain.dao.BatchManagerDAO;
+import org.jbpcc.domain.model.BatchManagerVO;
 
-public class JPAServerDAO extends BaseJPADAO <ServerVO, Integer> implements ServerDAO {
+public class JPABatchManagerDAO extends BaseJPADAO <BatchManagerVO, Integer> implements BatchManagerDAO {
 
 
 }
