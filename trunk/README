@@ -1,4 +1,6 @@
 Note
 
+This project use Apache Ivy to retrieve and resolve libraries dependencies. Thus, to build the project, User needs to copy the ivy-2.0.0-beta.jar from lib folder to $ANT_HOME/lib/folder.
+
 1. To build JSF 1.1 compatible WAR, type "ant war"
 2. To build JSF 1.2 compatible WAR type "ant -Djsf12=true war"
