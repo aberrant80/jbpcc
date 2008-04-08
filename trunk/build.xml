@@ -36,53 +36,56 @@
         <property name="build.cobertura.datafile" location="${build.dir}/cobertura.ser" />
         <property name="build.instrumented.classes.dir" location="${build.dir}/instrumented-classes/" />
         
-        
-        
-        
         <patternset id="jbpcc.required.jars"
                     includes="
-                    commons-beanutils-1.7.0.jar
-                    commons-cli-1.1.jar
-                    commons-collections-3.2.jar
-                    commons-dbcp-1.2.1.jar
-                    commons-discovery-0.4.jar
-                    commons-el-1.0.jar
-                    commons-fileupload-1.2.jar
-                    commons-lang-2.3.jar
-                    commons-logging-1.1.jar
-                    commons-pool-1.3.jar
-                    commons-digester-1.8.jar 
-                    commons-configuration-1.5.jar
-                    derby.jar
+                    commons-beanutils*.jar
+                    commons-cli*.jar
+                    commons-collections*.jar
+                    commons-dbcp*.jar
+                    commons-discovery*.jar
+                    commons-el*.jar
+                    commons-fileupload*.jar
+                    commons-lang*.jar
+                    commons-logging*.jar
+                    commons-pool*.jar
+                    commons-digester*.jar 
+                    commons-configuration*.jar
+                    derby*.jar                    
                     j2ee.jar
-                    jaxen-core.jar
-                    jaxen-jdom.jar
-                    jdom.jar
-                    jta.jar
-                    log4j.jar
-                    quartz-1.6.0.jar
-                    saxpath.jar
+                    jaxen-full.jar
+                    jdom*.jar
+                    log4j*.jar
+                    quartz*.jar
+                    saxpath*.jar
                     "
         />
         
         <!-- JPA Provider PATH, either toplink or openjpa -->
         <property name="jpa.provider" value="toplink"/>
-        <property name="jpa.lib.dir" value="${lib.dir}/jpa_provider/${jpa.provider}"/>
+        
+        <patternset id="openjpa" includes="
+                    serp-*.jar
+                    openjpa-*.jar
+                    geronimo-jpa*.jar"
+        />
+        <patternset id="toplink" includes="toplink*.jar"/>
+        
         
         
         <patternset id="common.icefaces.lib.jars.to.include"
                     includes="
-                    backport-util-concurrent.jar
+                    backport-util-concurrent*.jar
                     icefaces*.jar
-                    el-api.jar
-                    el-ri.jar
-                    jstl.jar
-                    xercesImpl.jar
+                    el-api*.jar
+                    el-ri*.jar
+                    jstl*.jar
+                    xercesImpl*.jar
                     krysalis-jCharts-*.jar
-                    xml-apis.jar">
-            <exclude name="el-api.jar"     if="jsf12" />
-            <exclude name="xercesImpl.jar" if="jsf12" />
-            <exclude name="xml-apis.jar"   if="jsf12" />
+                    xml-apis*.jar"
+        >
+            <exclude name="el-api*.jar"     if="jsf12" />
+            <exclude name="xercesImpl*.jar" if="jsf12" />
+            <exclude name="xml-apis*.jar"   if="jsf12" />
         </patternset>
         
         <patternset id="jsf.lib.jars.to.deploy" 
@@ -100,15 +103,7 @@
                     aopalliance.jar
                     ehcache*.jar
                     oscache*.jar
-                    spring-aop.jar
-                    spring-beans.jar
-                    spring-context.jar
-                    spring-core.jar
-                    spring-dao.jar
-                    spring-jms.jar
-                    spring-modules-cache-fixed-1__1.jar
-                    spring-web.jar
-                    spring-support.jar"
+                    spring-*.jar"
         />
         <!-- Compilation classpath -->
         <path id="jbpcc.compile.classpath">
@@ -116,17 +111,12 @@
             <pathelement path="${core.classes.jar}" />
             <fileset dir="${lib.dir}">
                 <patternset refid="jbpcc.required.jars"/>
-            </fileset>
-            <fileset dir="${lib.dir}">
                 <patternset refid="jbpcc.spring.required.jars"/>
-            </fileset>
-            <fileset dir="${lib.dir}">
                 <patternset refid="common.icefaces.lib.jars.to.include"/>
-            </fileset>
-             <fileset dir="${lib.dir}">
                 <patternset refid="jsf.lib.jars.to.deploy"/>
+                <patternset refid="${jpa.provider}"/>
             </fileset>
-            <fileset dir="${jpa.lib.dir}" includes="**/*.jar"/>
+            <!-- fileset dir="${jpa.lib.dir}" includes="**/*.jar"/ -->
         </path>
         
         <!-- Declare classpath for unit testing classes -->
@@ -158,7 +148,7 @@
         <taskdef classpathref="test.class.path" resource="tasks.properties" />
     </target>
     
-          
+    
     <!--- Clean -->
     <target name="clean-requested" >
         <!-- Just sets  a flag -->
@@ -189,7 +179,7 @@
     </target>
     
     
-     <target name="resolve-dependency" description="--> retreive dependencies with ivy">
+    <target name="resolve-dependency" description="--> retreive dependencies with ivy">
         <ivy:retrieve/>
     </target>
     
@@ -234,7 +224,7 @@
         <!-- -->
         <war destfile="${jbpcc.installer.file}"
              webxml="${web.webinf.dir}/web.xml"
-             >
+        >
             
             <!-- Web Admin configuration -->
             <webinf prefix="WEB-INF" dir="${conf.dir}" />
@@ -254,18 +244,10 @@
             <lib dir="${lib.dir}" >
                 <patternset refid="jbpcc.required.jars" />
                 <exclude name="j2ee.jar" />
-            </lib>
-            <lib dir="${lib.dir}" >
                 <patternset refid="jbpcc.spring.required.jars" />
-            </lib>
-            <lib dir="${lib.dir}" >
                 <patternset refid="common.icefaces.lib.jars.to.include" />
-            </lib>
-            <lib dir="${lib.dir}" >
                 <patternset refid="jsf.lib.jars.to.deploy" />
-            </lib>
-            <lib dir="${jpa.lib.dir}" >
-                <include name="**/*.jar"/>
+                <patternset refid="${jpa.provider}" />
             </lib>
             
             <!-- The actual pages and view snippets -->
