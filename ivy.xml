@@ -35,22 +35,47 @@
         <dependency org="commons-lang" name="commons-lang" rev="2.3" transitive="false"/>
         <dependency org="commons-pool" name="commons-pool" rev="1.3" transitive="false"/>
         <dependency org="commons-digester" name="commons-digester" rev="1.8" transitive="false"/>
+        <dependency org="log4j" name="log4j" rev="1.2.15" transitive="false"/>
         
         <!-- Apache Derby Libraries -->
-        <!-- dependency org="" name="" rev="" transitive=""/>
-        <dependency org="" name="" rev="" transitive=""/>
-        <dependency org="" name="" rev="" transitive=""/>
-        <dependency org="" name="" rev="" transitive=""/>
-   
-                    derby.jar
-                    j2ee.jar
-                    jaxen-core.jar
-                    jaxen-jdom.jar
-                    jdom.jar
-                    jta.jar
-                    log4j.jar
-                    quartz-1.6.0.jar
-                    saxpath.jar
-       --> 
+        <dependency org="org.apache.derby" name="derby" rev="10.3.2.1" transitive="false"/>
+        
+        <!-- Jaxen Jdom Related Libraries -->
+        <dependency org="jaxen" name="jaxen" rev="full" transitive="false"/>
+        <dependency org="jdom" name="jdom" rev="1.0" transitive="false"/>
+        <dependency org="saxpath" name="saxpath" rev="1.0-FCS" transitive="false"/> 
+        
+        <!-- Quartz 1.6.0 is not yet avaiable from public mvn repo 
+             Temporary disable it from ivy retrieve -->
+        <!-- dependency org="quartz" name="quaztz" rev="1.6.0" transitive="false"/ -->
+        
+        
+        <!-- ICE-Faces require libraries -->
+        <dependency org="backport-util-concurrent" name="backport-util-concurrent" rev="3.1" transitive="false"/>
+        <dependency org="net.sf.jcharts" name="krysalis-jCharts" rev="1.0.0-alpha-1" transitive="false"/>
+        <dependency org="xerces" name="xercesImpl"  rev="2.8.1" transitive="false"/>
+        <dependency org="jstl" name="jstl" rev="1.1.2" transitive="false"/>
+        <dependency org="xml-apis" name="xml-apis" rev="2.0.2" transitive="false"/>
+        
+        <!-- Spring require libraries -->
+        <dependency org="org.springframework" name="spring-aop" rev="2.0" transitive="false"/> 
+        <dependency org="org.springframework" name="spring-beans" rev="2.0" transitive="false"/>
+        <dependency org="org.springframework" name="spring-context" rev="2.0" transitive="false"/>
+        <dependency org="org.springframework" name="spring-core" rev="2.0" transitive="false"/>
+        <dependency org="org.springframework" name="spring-web" rev="2.0" transitive="false"/>
+        <dependency org="org.springframework" name="spring-jms" rev="2.0" transitive="false"/>
+        <dependency org="org.springframework" name="spring-dao" rev="2.0" transitive="false"/>
+        <dependency org="org.springframework" name="spring-support" rev="2.0" transitive="false"/> 
+        <dependency org="opensymphony" name="oscache" rev="2.4" transitive="false"/>
+        <dependency org="ehcache" name="ehcache" rev="1.2beta4" transitive="false"/>
+        <dependency org="aopalliance" name="aopalliance" rev="1.0" transitive="false"/>
+        
+        <!-- Open JPA libraries -->
+        <dependency org="org.apache.openjpa" name="openjpa" rev="1.0.2" transitive="false"/> 
+        <dependency org="org.apache.geronimo.specs" name="geronimo-jpa_3.0_spec" rev="1.1.1" transitive="false"/> 
+        <dependency org="net.sourceforge.serp" name="serp" rev="1.13.1" transitive="false"/> 
+        
+        <!-- Top Link libraries, for unknown reason, toplink is not avaiable from maven repo, temporary remark it -->
+        <!-- dependency org="javax.persistence" name="toplink-essentials" rev="1.0" transitive="false"/ --> 
     </dependencies>
 </ivy-module>
