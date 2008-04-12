@@ -25,6 +25,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.jbpcc.admin.util.ApplicationProperties;
 import org.jbpcc.admin.util.DBUtil;
@@ -34,7 +35,7 @@ import org.jbpcc.admin.util.DBUtil;
  * the web application.
  */
 public class StartUpListener implements ServletContextListener {
-
+    private static Logger LOGGER = Logger.getLogger(StartUpListener.class.getName());
     private static String JBPCC_DB_DRIVER_KEY = "jbpcc.db.driver";
     private static String JBPCC_DB_URL_KEY = "jbpcc.db.url";
     private static String JBPCC_DB_DRIVER_TOKEN = "%jbpcc.db.driver%";
@@ -61,6 +62,7 @@ public class StartUpListener implements ServletContextListener {
 
             DBUtil.initJBPCCDB(prefix);
             generetePersistanceConfigFromTemplate(prefix);
+            LOGGER.info("JBPCC Context initialized");
     }
 
     private void generetePersistanceConfigFromTemplate(String contextPath) {
