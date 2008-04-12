@@ -24,7 +24,7 @@ CREATE TABLE "JBPCC_USERS"
    LOGINNAME VARCHAR(30) not null unique,
    FORENAME VARCHAR(30),
    SURNAME VARCHAR(30),
-   ENABLED INTEGER not null,
+   ENABLED VARCHAR(10) not null,
    PASSWORD VARCHAR(1000)
 );
 
@@ -65,5 +65,5 @@ INSERT INTO JBPCC_IDGEN (gen_name, gen_val) VALUES ('BATCH_MANAGER_GEN', 10);
 -- 
 
 INSERT INTO JBPCC_USERS(ID, LOGINNAME, FORENAME, SURNAME, ENABLED, PASSWORD) 
-VALUES (1, 'admin', 'JBPCC', 'Administrator', 1, 'admin');
+VALUES (1, 'admin', 'JBPCC', 'Administrator', 'Yes', 'admin');
 
