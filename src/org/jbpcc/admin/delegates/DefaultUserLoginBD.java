@@ -5,7 +5,6 @@ import org.jbpcc.admin.constants.ErrorMessageKey;
 import org.jbpcc.domain.dao.DAOFinderException;
 import org.jbpcc.domain.model.UserVO;
 import org.jbpcc.domain.dao.UserDAO;
-import org.jbpcc.domain.model.BatchManagerVO;
 
 public class DefaultUserLoginBD implements UserLoginBD {
 
@@ -28,18 +27,7 @@ public class DefaultUserLoginBD implements UserLoginBD {
         if (!vo.getPassword().equals(loginPassword)) {
             throw new BusinessException(ErrorMessageKey.LOGIN_AUTHENTICATION_FAILED);
         }
-
-        // Testing only
-        try {
-            BatchManagerVO bVO = new BatchManagerVO("Agent3", "Server3", "localhost", 8574);
             
-            // Try to add the newly created ServerVO to user assigned ServerList
-            vo.getAssignedBatchManagers().add(bVO);
-            dao.update(vo);
-            
-        } catch (Exception exp) {
-            exp.printStackTrace();
-        }
 
         return vo;
     }
