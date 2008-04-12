@@ -166,6 +166,7 @@
         <delete dir="${dist.dir}" quiet="true" />
         <delete dir="${test.classes.dir}" quiet="true" />
         <delete dir="${test.report.dir}" quiet="true" />
+        <delete dir="${basedir}/target" quiet="true" />
     </target>
     
     <target name="clean"
@@ -191,17 +192,34 @@
         <mkdir dir="${build.dir}" />
         <mkdir dir="${build.classes.dir}" />
         <mkdir dir="${dist.dir}" />
+        <mkdir dir="${basedir}/target" />
     </target>
     
     
     
     <!-- Compile the source code -->
-    <target name="compile" depends="set-properties, init, resolve-dependency">
+    <target name="compile" depends="set-properties, init, resolve-dependency, preProcessJPABoolean">
+        <!-- Copy all the source code from the source to target -->
+        <!-- exclude all the Model class -->
+        <copy todir="${basedir}/target">
+            <fileset dir="./src">
+                <exclude name="org/jbpcc/domain/model/*.java"/>
+            </fileset>
+        </copy>
+        
+        
         <condition property="compile.debug" value="true" else="false">
             <isset property="coverage.report" />
         </condition>
-        <javac debug="${compile.debug}" srcdir="./src" destdir="${build.classes.dir}">
+        <javac debug="${compile.debug}" srcdir="${basedir}/target" destdir="${build.classes.dir}">
             <classpath refid="jbpcc.compile.classpath" />
+        </javac>
+    </target>
+    
+    <target name="compileJPABooleanProcessorFactory" depends="set-properties, init, resolve-dependency">
+        <javac srcdir="./src" destdir="${build.classes.dir}">
+            <classpath refid="jbpcc.compile.classpath" />
+            <include name="**/BooleanMagic*.java"/>
         </javac>
     </target>
     
@@ -216,6 +234,25 @@
         <!-- This one is under the parent project's dist tree -->
         <property name="jbpcc.installer.file" location="${dist.dir}/${war.name}.war" />
         <delete file="${jbpcc.installer.file}" />
+    </target>
+    
+    <!-- Compile the JPABoolean Annotation Processor Factory -->
+    <target name="buildJPABoolenProcessorFactory" depends="set-properties, init, compileJPABooleanProcessorFactory">
+        <jar destfile="${dist.dir}/BooleanMagicProcessorFactory.jar"
+             basedir="${build.classes.dir}"
+             includes="**/BooleanMagic*.class"
+        />
+    </target>
+    
+    <target name="preProcessJPABoolean" depends="buildJPABoolenProcessorFactory">
+        <apt srcdir="${src.dir}/org/jbpcc/domain/model/"
+             destdir="${build.classes.dir}"
+             classpath="./dist/BooleanMagicProcessorFactory.jar:./lib/toplink-essentials.jar:./lib/commons-lang-2.3.jar"
+             debug="on"    
+             compile="false"
+             factory="org.jbpcc.util.jpa.BooleanMagicProcessorFactory"
+             preprocessdir="${basedir}/target">
+        </apt>
     </target>
     
     <target name="war-core"
