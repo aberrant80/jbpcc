@@ -244,6 +244,7 @@ public class BooleanMagicProcessor implements AnnotationProcessor {
             buf.append("\tprivate String magicBoolean" + fieldName + ";" + NEW_LINE);
             buf.append(NEW_LINE + NEW_LINE);
 
+            /*
             buf.append("\tpublic String getMagicBoolean" + fieldName + "() {" + NEW_LINE);
             buf.append("\t    return magicBoolean" + fieldName + ";" + NEW_LINE);
             buf.append("\t}" + NEW_LINE + NEW_LINE);
@@ -251,7 +252,7 @@ public class BooleanMagicProcessor implements AnnotationProcessor {
             buf.append("\tpublic void setMagicBoolean" + fieldName + "(String boolValue) {" + NEW_LINE);
             buf.append("\t     this.magicBoolean" + fieldName + " = boolValue;" + NEW_LINE);
             buf.append("\t} " + NEW_LINE + NEW_LINE);
-
+            */
             buf.append("\tpublic Boolean is" + fieldName + "() {" + NEW_LINE);
             buf.append("\t    return this.magicBoolean" + fieldName + ".equals(\"" + trueValue + "\") ? Boolean.TRUE : Boolean.FALSE;" + NEW_LINE);
             buf.append("\t}" + NEW_LINE + NEW_LINE);
