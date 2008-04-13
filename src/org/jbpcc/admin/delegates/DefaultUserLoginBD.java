@@ -19,6 +19,7 @@ public class DefaultUserLoginBD implements UserLoginBD {
         try {
             LOGGER.debug("Attemp to login user with loginName->" + loginName + ", and password->" + loginPassword);
             vo = dao.findUserByLoginID(loginName);
+            LOGGER.debug("User is enabled?" + vo.isEnabled());
 
         } catch (DAOFinderException ex) {
             throw new BusinessException(ErrorMessageKey.USER_LOGIN_NAME_INVALID);
