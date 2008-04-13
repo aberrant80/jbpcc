@@ -28,9 +28,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.jbpcc.util.jpa.BooleanMagic;
 
 /**
  * A VO to store JBPCC login user data
@@ -54,6 +56,8 @@ public class UserVO implements Cloneable, Serializable {
     private String password;
     private String surName;
     private String foreName;
+    @BooleanMagic(trueValue="Yes", falseValue="No", columnName="ENABLED")
+    @Transient
     private Boolean enabled;
     
     @ManyToMany
@@ -86,7 +90,7 @@ public class UserVO implements Cloneable, Serializable {
         this.password = password;
     }
 
-    public Boolean getEnabled() {
+    public Boolean isEnabled() {
         return enabled;
     }
 

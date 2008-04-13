@@ -36,15 +36,14 @@ public class BooleanMagicProcessorFactory implements AnnotationProcessorFactory 
     }
 
     public Collection<String> supportedAnnotationTypes() {
-       /* List<String> supportedList = new ArrayList<String> ();
-        supportedList.add(JAVAX_PERSISTANCE_TRANSIENT_ANNOTATION);
+       List<String> supportedList = new ArrayList<String> ();
         supportedList.add(JPA_BOOLEAN_MAP_ANNOTATION);
         supportedList.add(JAVAX_PERSISTANCE_ENTITY_ANNOTATION);
         
-        return supportedList;*/
-        
+        return supportedList;
+        /*
         return Collections.singletonList(JPA_BOOLEAN_MAP_ANNOTATION);
-       
+       */
     }
 
     public AnnotationProcessor getProcessorFor(Set<AnnotationTypeDeclaration> atd, AnnotationProcessorEnvironment env) {
