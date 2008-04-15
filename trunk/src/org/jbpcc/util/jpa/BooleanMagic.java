@@ -37,9 +37,11 @@ public @interface BooleanMagic {
     public static final String COLUMN_NAME_KEY = "columnName";
     public static final String FALSE_VALUE_KEY = "falseValue"; 
     public static final String IF_NULL_KEY = "ifNull";
-   
+    
+    public enum ReturnType {TRUE, FALSE, NULL }
+    
     String falseValue();
     String trueValue();
     String columnName();
-    boolean ifNull() default false;
+    ReturnType ifNull() default ReturnType.NULL;
 }
