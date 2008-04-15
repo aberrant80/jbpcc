@@ -36,8 +36,10 @@ public @interface BooleanMagic {
     public static final String TRUE_VALUE_KEY = "trueValue";
     public static final String COLUMN_NAME_KEY = "columnName";
     public static final String FALSE_VALUE_KEY = "falseValue"; 
+    public static final String IF_NULL_KEY = "ifNull";
    
     String falseValue();
     String trueValue();
     String columnName();
+    boolean ifNull() default false;
 }
