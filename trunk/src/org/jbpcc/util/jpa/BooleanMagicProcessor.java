@@ -196,7 +196,7 @@ public class BooleanMagicProcessor implements AnnotationProcessor {
                                 bufReader.close();
                             } catch (Exception e) {
                             }
-                            buf.insert(buf.lastIndexOf("}"), NEW_LINE + NEW_LINE + generatedSourceBuf.toString() + NEW_LINE + CODE_TAIL + NEW_LINE);
+                            buf.insert(buf.lastIndexOf("}"), NEW_LINE + generatedSourceBuf.toString() + CODE_TAIL + NEW_LINE);
                             sourceFileText = buf.toString();
                         } else {
                             sourceFileText = getSourceCode(c.getPosition().file());
