@@ -4,70 +4,45 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:ice="http://www.icesoft.com/icefaces/component">
-<f:loadBundle basename="resources.messages" var="msgs" />
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-    <title>#{msgs['wac.main.title']}</title>
-    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/template.css" />
-    <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/login.css" />
-</head>
-
-<body background="#000000">
-<div
-    style="width: 100%; height: 270px; padding: 0px; left: 0px; top: 100px; position: relative; background-color: #FFF;">
-<ice:panelBorder style="width:100%; padding:0px; margin:0px;" cellspacing="0" cellpadding="0" renderNorth="true"
-    renderSouth="true" renderCenter="true" renderEast="true" renderWest="true">
-    <f:facet name="north">
-        <ice:panelGroup styleClass="purplePanel" />
-    </f:facet>
-    <f:facet name="west">
-        <div align="right" class="bluePanel" style="padding-right: 40px; width: 95%"><ice:panelGroup
-            styleClass="westPanel">
+    <f:loadBundle basename="resources.messages" var="msgs" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>#{msgs['wac.main.title']}</title>
+        <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/template.css" />
+        <link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/login.css" />
+    </head>
+    
+    <body background="#000000">
+        <div class="loginPanel">
             <ice:form>
-                <div style="height: 100%; width: 100%; padding-top: 50px;"><ice:outputText styleClass="appTitle"
-                    value="#{msgs['wac.login.label.login']}" />
-                <div style="height: 25px" />
-                <ice:panelGrid columns="2" columnClasses="labelText">
-                    <ice:outputLabel id="userNameLabel" value="#{msgs['wac.common.label.username']} : "
-                        styleClass="white" />
-                    <ice:inputText id="userNameInputText" value="#{loginBean.loginName}" required="true"
-                        action="#{loginBean.login}">
-                        <f:attribute name="errorFilterRef" value="wac.common.label.username" />
-                    </ice:inputText>
-                    <ice:outputLabel id="passwordLabel" value="#{msgs['wac.common.label.password']} : "
-                        styleClass="white" />
-                    <ice:inputSecret id="userPasswordInputText" value="#{loginBean.loginPassword}" required="true"
-                        action="#{loginBean.login}">
-                        <f:attribute name="errorFilterRef" value="wac.common.label.password" />
-                    </ice:inputSecret>
-                </ice:panelGrid>
-                <div align="right" style="display: block; padding-left: 170px; height: 10px"><ice:commandButton
-                    value="#{msgs['wac.common.button.login']}" action="#{loginBean.login}" /></div>
-                <f:attribute name="errorFilterRef" value="wac.common.label.password" /> <br />
-                <div class="labelText"><ice:panelGroup styleClass="errorText">
-                    <ice:messages id="mesages" showDetail="true" showSummary="false" />
-                </ice:panelGroup></div>
+                <div  align="right" style="height: 100%; width: 80%; padding-top: 50px; padding-right: 80px;">
+                    <ice:graphicImage url="/images/jbpccTitleFire.png" />
+                    <div style="height: 25px" />
+                    <div align="right" style="display: block; padding-right: 80px; height: 100%; width: 30%">
+                        <ice:panelGrid columns="2" columnClasses="labelText">
+                            <ice:outputLabel id="userNameLabel" value="#{msgs['wac.common.label.username']} : "
+                                             styleClass="white" />
+                            <ice:inputText id="userNameInputText" value="#{loginBean.loginName}" required="true"
+                                           action="#{loginBean.login}">
+                                <f:attribute name="errorFilterRef" value="wac.common.label.username" />
+                            </ice:inputText>
+                            <ice:outputLabel id="passwordLabel" value="#{msgs['wac.common.label.password']} : "
+                                             styleClass="white" />
+                            <ice:inputSecret id="userPasswordInputText" value="#{loginBean.loginPassword}" required="true"
+                                             action="#{loginBean.login}">
+                                <f:attribute name="errorFilterRef" value="wac.common.label.password" />
+                            </ice:inputSecret>
+                        </ice:panelGrid>
+                        <div style="height: 25px" />
+                        <ice:commandButton value="#{msgs['wac.common.button.login']}" action="#{loginBean.login}" />
+                    </div>
+                    <div class="labelText">
+                        <ice:panelGroup styleClass="errorText">
+                            <ice:messages id="mesages" showDetail="true" showSummary="false" />
+                        </ice:panelGroup>
+                    </div>
                 </div>
             </ice:form>
-
-        </ice:panelGroup></div>
-    </f:facet>
-
-    <f:facet name="center">
-        <div align="right"><ice:panelGroup styleClass="centerPanel">
-            <div align="center" style="top: 5px;"><ice:graphicImage value="/images/jbpcc_logo.png" /></div>
-            <div align="left" style="top: 20px; padding-left: 40px;"><ice:graphicImage
-                value="/images/logo_jbpcc_small.png" /></div>
-        </ice:panelGroup></div>
-    </f:facet>
-    <f:facet name="east">
-        <div align="right" width="100%" class="bluePanel"><ice:panelGroup styleClass="eastPanel" /></div>
-    </f:facet>
-    <f:facet name="south">
-        <div style="margin: 0px;"><ice:panelGroup styleClass="purplePanel">
-            <div class="copyrightMiddle"><ui:include src="./templates/include/copyright.xhtml" /></div>
-        </ice:panelGroup></div>
-    </f:facet>
-</ice:panelBorder></div>
-</body>
+        </div>
+    </body>
 </html>
