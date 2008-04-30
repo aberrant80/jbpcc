@@ -20,12 +20,13 @@ naming convention
     position: absolute;
 }
 
-.bluePanel {
-    background-image: url(../images/tile_green.gif);
-    background-repeat: repeat ;
+.loginPanel {
+    background-image: url(../images/background.jpg);
     width: 100%;
-    height: 250px;
+    height: 100%;
     z-index: -2;
+   background-repeat: no-repeat;
+  background-color: #000000;
 }
 
 .westPanel {
